@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSkillsTable extends Migration
+class CreateSkills extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,9 @@ class CreateSkillsTable extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
+            $table->string('skill');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +28,9 @@ class CreateSkillsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('skills');
+        Schema::enableForeignKeyConstraints();
+
     }
 }

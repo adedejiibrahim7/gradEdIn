@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('user_type', ['recruiter', 'seeker'])->default('seeker');
             $table->boolean('is_verified')->default(false);
             $table->boolean('is_mentor')->default(false);
             $table->boolean('is_admin')->default(false);

@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class skills extends Model
+class certification extends Model
 {
     protected $guarded = [];
 
     public function profile(){
-        return $this->belongsToMany(profile::class);
+        return $this->belongsTo(profile::class);
     }
 }

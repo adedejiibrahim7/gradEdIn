@@ -18,7 +18,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     {{--    <link href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">--}}
-    <link rel="stylesheet" href="{{ asset('assets/components/dropify/dist/css/dropify.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('assets/components/dropify/dist/css/dropify.min.css') }}">--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
     <link href="{{ asset('assets/components/custom-select/custom-select.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/components/switchery/dist/switchery.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
@@ -89,17 +90,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" defer></script>
 
-    <script src="{{ asset('assets/components/dropify/dist/js/dropify.js') }}"></script>
-    <script src="{{ asset('assets/components/custom-select/custom-select.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-
+    <script src="{{ asset('assets/components/dropify/dist/js/dropify.js') }}" defer></script>
+{{--    <script src="/assets/components/dropify/dist/js/dropify.js"></script>--}}
+    <script src="{{ asset('assets/components/custom-select/custom-select.min.js') }}" type="text/javascript" ></script>
+    <script src="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript" ></script>
+    <script src="{{ asset('assets/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}" ></script>
+    @yield('add_form')
     <script>
         $(function() {
-            alert("kk");
-            // $('.dropify').dropify();
+            // alert("kk");
+            $('.dropify').dropify();
             $(".select2").select2();
-            $(".school").select2();
+            // $(".school").select2();
 
         });
     </script>

@@ -10969,3 +10969,39 @@ label {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.dropify {
+  font-size: 14px;
+}
+
+.avatar {
+  max-height: 100px;
+  max-width: 100px;
+  border-radius: 50px;
+}
+
+.avatar > .dropify {
+  max-height: 100px;
+}
+
+.panel {
+  padding: 20px;
+}
+
+.img-p-l {
+  height: 350px;
+  width: 350px;
+}
+
+.img-p-l > img {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.top-display {
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
+}
+

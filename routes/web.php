@@ -23,3 +23,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', function (){
     return view('details');
 });
+Route::post('/p', 'ProfileController@store');
+Route::get('/opportunities/create', 'OpportunitiesController@create');
+Route::get('/opportunities', 'OpportunitiesController@index');
+Route::get('/opportunities/{opportunity}', 'OpportunitiesController@show');
+Route::post('/o', 'OpportunitiesController@store');
+Route::get('/apply/{opportunity}', 'ApplicationController@apply');
+Route::get('/my-applications', 'ApplicationController@myApplications');
+Route::get('/applications/{opportunity}', 'ApplicationController@index');

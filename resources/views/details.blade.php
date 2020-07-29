@@ -189,7 +189,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <label for="cover_letter">Logo</label>
+                            <label for="cover_letter">Cover Letter</label>
                             <input type="file" name="cover_letter" id="cover_letter" class="dropify" data-allowed-file-extensions="png jpeg jpg">
                             @error('cover_letter')
                                 <span class="text-danger">

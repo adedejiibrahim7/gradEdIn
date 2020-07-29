@@ -13,4 +13,7 @@ class Application extends Model
     public function opportunity(){
         return $this->belongsTo(opportunity::class);
     }
+    public function profile(){
+        return $this->belongsTo(profile::class);
+    }
 }

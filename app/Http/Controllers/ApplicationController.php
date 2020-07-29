@@ -9,32 +9,46 @@ use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(opportunity $opportunity){
         $applicant_profiles = Application::where('opportunity_id', $opportunity->id)->pluck('profile_id');
+//        $applicant_profiles = Application::where('opportunity_id', $opportunity->id)->get();
+//        $applications = Application::where('opportunity_id', $opportunity->id)->get();
         $profiles = profile::all()->whereIn('id', $applicant_profiles);
-//        dd(Application::all());
+//        dd($profiles[0]->application[0]->resume);
+//        dd(application::whereIn('profile_id', $applicant_profiles))->get();
+        $resume = Application::where('opportunity_id', $opportunity->id)->whereIn('profile_id', $applicant_profiles)->pluck('resume');
         return view('applications.index', compact('profiles', 'opportunity'));
     }
 
     public function apply(opportunity $opportunity){
-
+//        dd(request()->all());
         if(request('resume')){
-            request('resume')->store('uploads/application_docs', 'public');
+            $resume = request('resume')->store('uploads/application_docs', 'public');
+        }else{
+            $resume = '';
         }
         if(request('cover_letter')){
-            request('cover_letter')->store('uploads/application_docs', 'public');
+            $cover_letter = request('cover_letter')->store('uploads/application_docs', 'public');
+        }else{
+            $cover_letter = '';
         }
-        $applied = Application::all()->where('profile_id', auth()->user()->profile->id);
+        $applied = Application::all()->where('profile_id', auth()->user()->profile->id)->where('opportunity_id', $opportunity->id);
 //        $applied = Application::all()->where('profile_id',  2);
+
         if($applied->count() == 0){
             Application::create([
                 'profile_id' => auth()->user()->profile->id,
                 'opportunity_id' => $opportunity->id,
-                'resume' => 'document',
-                'cover_letter' => 'document'
+                'resume' => $resume,
+                'cover_letter' => $cover_letter
             ]);
 
-            $str = "Application for {{ $opportunity->title }} successsful!";
+            $str = "Application for  $opportunity->title  successsful!";
 
         }else{
             $str = "You already applied for {{ $opportunity->title }}";

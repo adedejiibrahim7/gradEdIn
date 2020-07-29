@@ -7,6 +7,11 @@ use App\opportunity;
 
 class OpportunitiesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $opportunities = opportunity::all();
         return view('opportunities.index', compact('opportunities'));
@@ -51,5 +56,9 @@ class OpportunitiesController extends Controller
     public function show(opportunity $opportunity){
 //        dd($opportunity);
         return view('opportunities.show', compact('opportunity'));
+    }
+    public function myOpportunities(){
+        $opportunities = opportunity::where('user_id', auth()->user()->id)->paginate(10);
+        return view('user.my-opportunities', compact('opportunities'));
     }
 }

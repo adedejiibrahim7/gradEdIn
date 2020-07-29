@@ -19,4 +19,9 @@ class profile extends Model
     public function certifications(){
         return $this->hasMany(certification::class);
     }
+
+    //Note
+    public function application(){
+        return $this->hasMany(application::class);
+    }
 }

@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="panel p-20">
-                <div class="panel-heading display-4 text-center">Post an opportunity</div>
+                <div class=" top-display text-center">Post an opportunity</div>
 
                 <div class="panel-body">
                     <form action="/o" method="post" enctype="multipart/form-data">

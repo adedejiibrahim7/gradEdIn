@@ -11005,3 +11005,13 @@ label {
   padding: 5px;
 }
 
+.p-20 {
+  padding: 20px;
+}
+
+.avatar {
+  height: 180px;
+  width: 180px;
+  border-radius: 90px;
+}
+

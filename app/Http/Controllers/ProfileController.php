@@ -3,11 +3,31 @@
 namespace App\Http\Controllers;
 
 
+use App\profile;
+use App\skills;
+use App\User;
 use Illuminate\Http\Request;
 use App\academic_history;
 
 class ProfileController extends Controller
 {
+    public function show(User $user){
+//        $profile = profile::all()->whereIn('user_id', [$user->id]);
+        $profile = $user->profile;
+//        dd($profile);
+//        $skills = skills::where('profile_id', $profile->id);
+        $skills = $profile->skills;
+//        dd($skills);
+        $academic_history = academic_history::where('profile_id', $profile->id)->get();
+//        $academic_history = $user->profile->academic_history;
+//        dd($academic_history);
+//
+        return view('profile.show', compact('profile', 'academic_history', 'skills'));
+    }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function store()
     {

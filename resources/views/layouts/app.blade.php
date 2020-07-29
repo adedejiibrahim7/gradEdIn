@@ -19,6 +19,7 @@
 
     {{--    <link href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">--}}
 {{--    <link rel="stylesheet" href="{{ asset('assets/components/dropify/dist/css/dropify.min.css') }}">--}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
     <link href="{{ asset('assets/components/custom-select/custom-select.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/components/switchery/dist/switchery.min.css') }}" rel="stylesheet" />

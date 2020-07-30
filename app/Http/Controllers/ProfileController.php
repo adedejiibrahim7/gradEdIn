@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\certification;
 use App\profile;
 use App\skills;
 use App\User;
@@ -17,6 +18,7 @@ class ProfileController extends Controller
 //        dd($profile);
 //        $skills = skills::where('profile_id', $profile->id);
         $skills = $profile->skills;
+//        $certifications = $prof
 //        dd($skills);
         $academic_history = academic_history::where('profile_id', $profile->id)->get();
 //        $academic_history = $user->profile->academic_history;
@@ -28,10 +30,29 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
     }
+    public function edit(profile $profile){
+        $this->authorize('update', $profile);
+//        dd(auth()->user()->profile->user_id);
+        $nn = $profile->skills->pluck('skill');
+        $notSkills = skills::whereNotIn('skill', $nn)->get();
+//        dd($notSkills);
+        return view('profile.edit', compact('profile', 'notSkills'));
+    }
 
+    public function update(profile $profile){
+        $this->authorize('update', $profile);
+        dd("Profile Update coming in a jiffy");
+//        if(request()->gre == 'on'){
+//
+//            dd(request()->all());
+//        }
+//        dd("Hi");
+    }
     public function store()
     {
 //        dd(request()->all());
+//        $this->authorize('create', $user);
+
         $data = request()->validate([
             'title' => ['required', 'string'],
             'firstName' => ['required', 'string'],
@@ -43,10 +64,7 @@ class ProfileController extends Controller
             'start' => 'required',
             'end' => 'required',
             'skills' => ''
-//            'cv' => ['required', 'string'],
-//            'cover_letter' => ['required', 'string']
         ]);
-//        dd(auth()->user());
 
         $avatar = request('avatar')->store('uploads/profile/image', 'public');
         $cv = request('cv')->store('uploads/profile/docs', 'public');
@@ -61,7 +79,7 @@ class ProfileController extends Controller
             'cv' => $cv,
             'cover_letter' => $cover_letter,
         ]);
-//        dd($profile->id);
+
         academic_history::create([
             'school' => $data['school'],
             'course' => $data['course'],
@@ -71,6 +89,24 @@ class ProfileController extends Controller
             'profile_id' => $profile->id
         ]);
 
+        if(request()->ielts){
+            certification::create([
+               'profile_id' => $profile->id,
+                'certification' => 'ielts'
+            ]);
+        }
+        if(request()->gre) {
+            certification::create([
+                'profile_id' => $profile->id,
+                'certification' => 'gre'
+            ]);
+        }
+        if(request()->toefl) {
+            certification::create([
+                'profile_id' => $profile->id,
+                'certification' => 'toefl'
+            ]);
+        }
         $profile->skills()->attach($data['skills']);
 
         session()->flash('msg', 'Profile Created!');

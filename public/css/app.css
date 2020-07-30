@@ -11015,3 +11015,17 @@ label {
   border-radius: 90px;
 }
 
+.read-more-show {
+  cursor: pointer;
+  color: #ed8323;
+}
+
+.read-more-hide {
+  cursor: pointer;
+  color: #ed8323;
+}
+
+.hide_content {
+  display: none;
+}
+

@@ -12,7 +12,9 @@
     <div class="row justify-content-center">
         <div class="col-md-2">
             <p class=""><a href="#">My Opportunities</a></p>
+            <p class=""><a href="/opportunities/create">Post Opportunity</a></p>
             <p class=""><a href="/my-applications">My Applications</a></p>
+            <p><a href="/profile/{{ auth()->user()->profile->id }}">My Profile</a></p>
         </div>
         <div class="col-md-8">
             <div class="card">

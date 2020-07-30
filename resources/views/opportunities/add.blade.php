@@ -68,7 +68,7 @@
                                 <hr>
                                 <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <label for="open">Open</label>
+                                    <label for="open">Open (Optional)</label>
                                     <input type="datetime-local" name="open" id="open" class="form-control-small @error('open') is-invalid @enderror" >
                                     @error('open')
                                     <span>{{$message}}</span>
@@ -76,7 +76,7 @@
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <label for="close">Close</label>
+                                    <label for="close">Close (Optional)</label>
                                     <input type="datetime-local" name="close" class="form-control-small @error('close') is-invalid @enderror" >
                                     @error('close')
                                     <span>{{$message}}</span>

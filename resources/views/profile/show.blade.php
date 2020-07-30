@@ -16,19 +16,27 @@
 
                     <div class="col-sm-8 p-20">
                         <div>
-                            <p class="top-display text-left">{{ $profile->first_name }}, {{ strtoupper($profile->last_name) }}</p>
+                            <p class="top-display text-left">{{ $profile->first_name }}, {{ strtoupper($profile->last_name) }}  </p>
+                            @can('update', $profile)
+                                <p><a href="/profile/edit/{{ $profile->id }}"><button class="btn btn-primary">Edit Profile</button></a></p>
+                            @endcan
+                            @forelse($profile->certifications as $certification)
+                                <span class="fa fa-check">{{ $certification->$certification }}</span>
+                                @empty
+{{--                                <span class="fa fa-check"></span>--}}
+                            @endforelse
                         </div>
                         <div>
                             <p class="">{{ $profile->bio }}</p>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <p><span class="fa fa-clip"></span><a href="/storage/{{ $profile->cv }}">CV</a></p>
+                                <p><a href="/storage/{{ $profile->cv }}" target="_blank"><span class="fa fa-link"></span> CV</a></p>
                             </div>
                             <div class="col-sm-6">
-                                <p><span class="fa fa-clip"></span><a href="/storage/{{ $profile->cover_letter }}">Cover Letter</a></p>
+                                <p><a href="/storage/{{ $profile->cover_letter }}" target="_blank"><span class="fa fa-link"></span> Cover Letter</a></p>
                             </div>
-                        </div>app
+                        </div>
                     </div>
                     <hr>
                 </div>
@@ -40,11 +48,7 @@
                             <p>{{ $ach->school }}</p>
                             <p>{{ $ach->course }}</p>
                             <p>{{ $ach->certification }}</p>
-{{--                            <div class="row">--}}
-                                <div class="small">{{ $ach->start }} - {{ $ach->end }}</div>
-                            <hr style="width: 60%" class="">
-{{--                                <div class="col-sm-6"></div>--}}
-{{--                            </div>--}}
+                            <div class="small">{{ $ach->start }} - {{ $ach->end }}</div>
                         @empty
                             None
                         @endforelse

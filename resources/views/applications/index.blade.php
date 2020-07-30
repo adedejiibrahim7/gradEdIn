@@ -18,7 +18,15 @@
                         </div>
                         <div class="col-sm-8">
                             <p class="font-weight-bold"><a href="/opportunities/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>
-                            <p class="">{{ $profile->bio }}</p>
+                            @if(strlen($profile->bio) > 150)
+                                {{substr($profile->bio,0,150)}}
+                                <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
+                                <span class="read-more-content"> {{substr($profile->bio,150,strlen($profile->bio))}}
+                                <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
+                            @else
+                                {{$profile->bio}}
+                            @endif
+
                             <div class="row align-text-bottom">
                                 <div class="col-sm-6">
                                     @if($profile->application[0]->resume != "document")
@@ -47,4 +55,29 @@
         </div>
     </div>
 
+@endsection
+
+@section('read_more')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.read-more-content').addClass('hide_content')
+            $('.read-more-show, .read-more-hide').removeClass('hide_content')
+
+            // Set up the toggle effect:
+            $('.read-more-show').on('click', function(e) {
+                $(this).next('.read-more-content').removeClass('hide_content');
+                $(this).addClass('hide_content');
+                e.preventDefault();
+            });
+
+            // Changes contributed by @diego-rzg
+            $('.read-more-hide').on('click', function(e) {
+                var p = $(this).parent('.read-more-content');
+                p.addClass('hide_content');
+                p.prev('.read-more-show').removeClass('hide_content'); // Hide only the preceding "Read More"
+                e.preventDefault();
+            });
+        });
+
+    </script>
 @endsection

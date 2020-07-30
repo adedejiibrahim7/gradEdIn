@@ -97,6 +97,7 @@
     <script src="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript" ></script>
     <script src="{{ asset('assets/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}" ></script>
     @yield('add_form')
+@yield('read_more')
     <script>
         $(function() {
             // alert("kk");

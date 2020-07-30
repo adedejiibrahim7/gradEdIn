@@ -15,6 +15,7 @@ class ApplicationController extends Controller
     }
 
     public function index(opportunity $opportunity){
+        $this->authorize('view', $opportunity);
         $applicant_profiles = Application::where('opportunity_id', $opportunity->id)->pluck('profile_id');
 //        $applicant_profiles = Application::where('opportunity_id', $opportunity->id)->get();
 //        $applications = Application::where('opportunity_id', $opportunity->id)->get();

@@ -82,6 +82,18 @@ label{
     width: 180px;
     border-radius: 90px;
 }
+.read-more-show{
+    cursor:pointer;
+    color: #ed8323;
+}
+.read-more-hide{
+    cursor:pointer;
+    color: #ed8323;
+}
+
+.hide_content{
+    display: none;
+}
 //.avatar img{
 //    max-height: 120px;
 //    max-width: 120px;

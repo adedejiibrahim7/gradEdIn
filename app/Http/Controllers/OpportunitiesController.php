@@ -58,6 +58,7 @@ class OpportunitiesController extends Controller
         return view('opportunities.show', compact('opportunity'));
     }
     public function myOpportunities(){
+
         $opportunities = opportunity::where('user_id', auth()->user()->id)->paginate(10);
         return view('user.my-opportunities', compact('opportunities'));
     }

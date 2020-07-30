@@ -28,7 +28,7 @@ class HomeController extends Controller
         if(auth()->user()->profile !== null){
             return view('home');
         }else{
-            return view('details');
+            return view('profile.create');
         }
     }
 }

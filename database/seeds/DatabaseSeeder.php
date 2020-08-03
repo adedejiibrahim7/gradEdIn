@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             'email' => "test@mailnator.com",
             'password' => bcrypt('password'),
             'is_admin' => true,
+              'created_at' => date("Y-m-d H:i:s"),
+              'updated_at' => date("Y-m-d H:i:s")
 //            'phone'=>'+911234567890',
 
         ],
@@ -26,6 +28,8 @@ class DatabaseSeeder extends Seeder
                 'email' => "test2@mailnator.com",
                 'password' => bcrypt('password'),
                 'is_admin' => true,
+               'created_at' => date("Y-m-d H:i:s"),
+               'updated_at' => date("Y-m-d H:i:s")
 //            'phone'=>'+911234567890',
 
             ]
@@ -47,6 +51,8 @@ class DatabaseSeeder extends Seeder
                 'bio' => 'Lorem ipsum dolor',
                 'cv' => 'uploads/profile/docs/82nkD5BUJs73ptOxgjQ4PPyHYBnNG7OrOvi3f0SF.pdf',
                 'cover_letter' => 'uploads/profile/docs/82nkD5BUJs73ptOxgjQ4PPyHYBnNG7OrOvi3f0SF.pdf',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ],
             1 => [
                 'user_id' => 2,
@@ -57,6 +63,8 @@ class DatabaseSeeder extends Seeder
                 'bio' => 'Lorem ipsum dolor',
                 'cv' => 'uploads/profile/docs/82nkD5BUJs73ptOxgjQ4PPyHYBnNG7OrOvi3f0SF.pdf',
                 'cover_letter' => 'uploads/profile/docs/82nkD5BUJs73ptOxgjQ4PPyHYBnNG7OrOvi3f0SF.pdf',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]
         ]);
 

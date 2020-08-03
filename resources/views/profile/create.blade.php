@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
+    <p class="top-display">Profile Setupweb</p>
     <div class="row justify-content-center">
-        <p class="top-display">Profile Setup</p>
 {{--        <div class="col-md-2"></div>--}}
         <div class="col-md-8">
             <div class="panel panel-large">

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <p class="top-display">Profile Setupweb</p>
+    <p class="top-display">Profile Setup</p>
     <div class="row justify-content-center">
 {{--        <div class="col-md-2"></div>--}}
         <div class="col-md-8">

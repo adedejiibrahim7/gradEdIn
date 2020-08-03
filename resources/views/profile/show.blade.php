@@ -21,7 +21,7 @@
                                 <p><a href="/profile/edit/{{ $profile->id }}"><button class="btn btn-primary">Edit Profile</button></a></p>
                             @endcan
                             @forelse($profile->certifications as $certification)
-                                <span class="fa fa-check">{{ $certification->$certification }}</span>
+                                <span class="fa fa-check p-2 font-weight-bold" style="color:green">{{ $certification->certification }}</span>
                                 @empty
 {{--                                <span class="fa fa-check"></span>--}}
                             @endforelse

@@ -49,8 +49,8 @@ class OpportunitiesController extends Controller
             'link' => $data['link'],
             'open' => $data['open'],
             'close' => $data['close'],
-//            'media' => $media,
-            'media' => 'uploads/opportunities/6jHNLxQ5eOFQp0O1sRaUZRJMi2qEqDUBIgPujNrh.jpeg',
+            'media' => $media,
+//            'media' => 'uploads/opportunities/6jHNLxQ5eOFQp0O1sRaUZRJMi2qEqDUBIgPujNrh.jpeg',
 //            'deleted_at' => null,
             'take_app' => $take_app
         ]);

@@ -73,19 +73,19 @@
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Signup</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
+                <div class="top-displaapp.y">Find Opportunities</div>
                 <div class="title">
                     GradEdIn
                 </div>
-
-                <div class="links">
-                    <a href="/signup">Signup</a>
+                <div class="links mt-5">
+                    <a href="/register">Signup</a>
                     <a href="/login">Login</a>
 {{--                    <a href="https://laravel-news.com">News</a>--}}
 {{--                    <a href="https://blog.laravel.com">Blog</a>--}}

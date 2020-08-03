@@ -12,6 +12,14 @@ use App\academic_history;
 
 class ProfileController extends Controller
 {
+    public function create(){
+        $profile = profile::where('user_id', auth()->user()->id)->count();
+        if($profile == 0){
+            return view ('profile.create');
+        }else{
+            return redirect("/profile/edit/".auth()->user()->profile->id);
+        }
+    }
     public function show(User $user){
 //        $profile = profile::all()->whereIn('user_id', [$user->id]);
         $profile = $user->profile;

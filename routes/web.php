@@ -31,5 +31,5 @@ Route::get('/my-applications', 'ApplicationController@myApplications');
 Route::get('/applications/{opportunity}', 'ApplicationController@index');
 Route::get('/profile/{user}', 'ProfileController@show');
 Route::get('/profile/edit/{profile}', 'ProfileController@edit');
-Route::get('/smy-opportunities/', 'OpportunitiesController@myOpportunities');
+Route::get('/my-opportunities/', 'OpportunitiesController@myOpportunities');
 Route::patch('update/{profile}', 'Profilecontroller@update');

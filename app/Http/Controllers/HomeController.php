@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         if(auth()->user()->profile !== null){
-            return view('home');
+            return view('opportunities/index');
         }else{
             return view('profile.create');
         }

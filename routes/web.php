@@ -19,10 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile-setup', function (){
-    return view('details');
-});
+Route::get('/home', 'OpportunitiesController@index');
+Route::get('/profile-setup', 'ProfileController@create');
 Route::post('/p', 'ProfileController@store');
 Route::get('/opportunities/create', 'OpportunitiesController@create');
 Route::get('/opportunities', 'OpportunitiesController@index');

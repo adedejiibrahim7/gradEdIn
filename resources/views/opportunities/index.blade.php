@@ -10,7 +10,7 @@
                             <p>{{ Session::get("msg") }}  </p>
                         </div>
                     @endif
-                <div class="display-4">Hello</div>
+                <div class="top-display">Opportunities</div>
                 @forelse($opportunities as $opportunity)
                     <div class="row panel mb-3">
                         <div class="col-sm-4">
@@ -29,9 +29,9 @@
 
 {{--                            <p class="">{{ $opportunity->description }}</p>--}}
 {{--                                <p class="">{{ $opportunity->take_app }}</p>--}}
-                            <div class="row align-text-bottom">
-                                <div class="col-sm-6">{{ $opportunity->open }}</div>
-                                <div class="col-sm-6">{{ $opportunity->close }}</div>
+                            <div class="row align-text-bottom mt-2">
+                                <div class="col-sm-6 small font-weight-bold">Opened: {{ date("D, d M Y", strtotime($opportunity->open)) }}</div>
+                                <div class="col-sm-6 small font-weight-bold">Closes: {{ date("D, d M Y", strtotime($opportunity->close)) }}</div>
                             </div>
                         </div>
                     </div>

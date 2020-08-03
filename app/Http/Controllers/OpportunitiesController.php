@@ -13,8 +13,14 @@ class OpportunitiesController extends Controller
     }
 
     public function index(){
-        $opportunities = opportunity::all();
-        return view('opportunities.index', compact('opportunities'));
+        if(auth()->user()->profile !== null){
+            $opportunities = opportunity::all();
+            return view('opportunities.index', compact('opportunities'));
+//            return view('opportunities/index');
+        }else{
+            return view('profile.create');
+        }
+
     }
 
     public function create(){

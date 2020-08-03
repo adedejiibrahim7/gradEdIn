@@ -68,20 +68,20 @@ class DatabaseSeeder extends Seeder
 //            ]
 //        ]);
 
-        DB::table('profile_skills')->insert([
-            0 => [
-                'profile_id' => 1,
-                'skills_id' => 2
-            ],
-            1 => [
-                'profile_id' => 1,
-                'skills_id' => 3
-            ],
-            2=>[
-                'profile_id' => 2,
-                'skills_id' => 1
-            ]
-
-        ]);
+//        DB::table('profile_skills')->insert([
+//            0 => [
+//                'profile_id' => 1,
+//                'skills_id' => 2
+//            ],
+//            1 => [
+//                'profile_id' => 1,
+//                'skills_id' => 3
+//            ],
+//            2=>[
+//                'profile_id' => 2,
+//                'skills_id' => 1
+//            ]
+//
+//        ]);
     }
 }

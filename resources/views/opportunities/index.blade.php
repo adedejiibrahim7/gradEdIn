@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <p class=""><a href="#">My Opportunities</a></p>
+                <p class=""><a href="/my-opportunities">My Opportunities</a></p>
                 <p class=""><a href="/opportunities/create">Post Opportunity</a></p>
                 <p class=""><a href="/my-applications">My Applications</a></p>
                 <p><a href="/profile/{{ auth()->user()->profile->id }}">My Profile</a></p>

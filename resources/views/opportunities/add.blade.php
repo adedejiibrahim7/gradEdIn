@@ -58,7 +58,7 @@
 
                             <div class="form-group">
                                 <label for="media">Media (Optional) </label>
-                                <input type="file" name="media" class="form-control-file @error('media') is-invalid @enderror" >
+                                <input type="file" name="media" class="form-control-file @error('media') is-invalid @enderror" accept="image/jpeg, image/png, image/jpg">
                                 @error('media')
                                     <span>{{$message}}</span>
                                 @enderror

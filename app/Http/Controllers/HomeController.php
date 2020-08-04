@@ -28,7 +28,8 @@ class HomeController extends Controller
         if(auth()->user()->profile !== null){
             return view('opportunities/index');
         }else{
-            return view('profile.create');
+//            return view('profile.create');
+            return redirect('/profile-setup');
         }
     }
 }

@@ -15,8 +15,9 @@ class ProfileController extends Controller
 {
     public function create(){
         $profile = profile::where('user_id', auth()->user()->id)->count();
+        $skills = skills::all();
         if($profile == 0){
-            return view ('profile.create');
+            return view ('profile.create', compact('skills'));
         }else{
             return redirect("/profile/edit/".auth()->user()->profile->id);
         }

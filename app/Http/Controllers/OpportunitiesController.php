@@ -42,7 +42,7 @@ class OpportunitiesController extends Controller
             try {
                 $media = request('media')->store( 'uploads/opportunities', 'public');
 //                $media = Storage::disk('public')->put('uploads/opportunities', request('media'));
-                dd($media);
+//                dd($media);
             } catch (\Exception $e) {
                 dd($e);
             }

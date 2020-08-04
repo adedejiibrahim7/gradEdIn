@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\opportunity;
+use App\Policies\OpportunityPolicy;
 use App\Policies\ProfilePolicy;
 use App\profile;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -16,7 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
-        profile::class => ProfilePolicy::class
+        profile::class => ProfilePolicy::class,
+        opportunity::class => OpportunityPolicy::class
     ];
 
     /**

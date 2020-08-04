@@ -17,7 +17,7 @@
                             <img src="/storage/{{ $profile->avatar }}" alt="media" class=" card-img">
                         </div>
                         <div class="col-sm-8">
-                            <p class="font-weight-bold"><a href="/opportunities/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>
+                            <p class="font-weight-bold"><a href="/profile/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>
                             @if(strlen($profile->bio) > 150)
                                 {{substr($profile->bio,0,150)}}
                                 <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>

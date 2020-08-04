@@ -8,7 +8,7 @@
                 <div class=" panel ">
                     <p>{{ $opportunity->user_id }}</p>
                     <div class="img-p-l m-auto">
-                        <img src="/storage/{{ $opportunity->media }}" alt="media" class="img-fluid">
+                        <img src="/{{ $opportunity->media }}" alt="media" class="img-fluid">
                     </div>
                     <div class="text-center pt-3">
                         <div>

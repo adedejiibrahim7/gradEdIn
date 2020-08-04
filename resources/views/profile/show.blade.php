@@ -9,7 +9,7 @@
                     <div class="col-sm-4">
                         <div class="text-right">
 {{--                            <img src="/storage/{{ $profile->avatar }}" alt="media" class="img-fluid">--}}
-                            <img src="/storage/uploads/profile/image/cSKfGPIOAwVlUtS6PkJd9a0WAQ7xM8AetsV1TvUD.jpeg" alt="avatar" class="avatar">
+                            <img src="/uploads/profile/image/cSKfGPIOAwVlUtS6PkJd9a0WAQ7xM8AetsV1TvUD.jpeg" alt="avatar" class="avatar">
                         </div>
 
                     </div>

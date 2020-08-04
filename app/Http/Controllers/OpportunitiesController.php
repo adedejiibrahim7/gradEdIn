@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\opportunity;
+use Illuminate\Support\Facades\Storage;
 
 class OpportunitiesController extends Controller
 {
@@ -38,7 +39,8 @@ class OpportunitiesController extends Controller
 
         if(request('media')){
             try {
-                $media = request('media')->store( 'uploads/opportunities', 'public');
+//                $media = request('media')->store( 'uploads/opportunities', 'public');
+                $media = Storage::disk('public')->put('uploads/opportunities', request('media'));
             } catch (\Exception $e) {
                 dd($e);
             }

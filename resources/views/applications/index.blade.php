@@ -14,7 +14,7 @@
                 @forelse($profiles as $profile)
                     <div class="row panel mb-3">
                         <div class="col-sm-4">
-                            <img src="/storage/{{ $profile->avatar }}" alt="media" class=" card-img">
+                            <img src="/{{ $profile->avatar }}" alt="media" class=" card-img">
                         </div>
                         <div class="col-sm-8">
                             <p class="font-weight-bold"><a href="/profile/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>

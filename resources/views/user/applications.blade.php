@@ -14,7 +14,7 @@
                 @forelse($applications as $application)
                     <div class="row panel mb-3">
                         <div class="col-sm-4">
-                            <img src="/storage/{{ $application->opportunity->media }}" alt="media" class=" card-img">
+                            <img src="/{{ $application->opportunity->media }}" alt="media" class=" card-img">
                         </div>
                         <div class="col-sm-8">
                             <p class="font-weight-bold"><a href="/opportunities/{{ $application->opportunity->id }}">{{ $application->opportunity->title }}</a></p>

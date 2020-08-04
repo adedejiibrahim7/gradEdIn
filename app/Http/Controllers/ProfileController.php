@@ -9,6 +9,7 @@ use App\skills;
 use App\User;
 use Illuminate\Http\Request;
 use App\academic_history;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -74,9 +75,12 @@ class ProfileController extends Controller
             'skills' => ''
         ]);
 
-        $avatar = request('avatar')->store('uploads/profile/image', 'public');
-        $cv = request('cv')->store('uploads/profile/docs', 'public');
-        $cover_letter = request('cover_letter')->store('uploads/profile/docs', 'public');
+//        $avatar = request('avatar')->store('uploads/profile/image', 'public');
+//        $cv = request('cv')->store('uploads/profile/docs', 'public');
+//        $cover_letter = request('cover_letter')->store('uploads/profile/docs', 'public');
+        $avatar = Storage::disk('public')->put('uploads/profile/image', request('avatar'));
+        $cv = Storage::disk('public')->put('uploads/profile/docs', request('cv'));
+        $cover_letter = Storage::disk('public')->put('uploads/profile.docs', request('cover_letter'));
 
         $profile = auth()->user()->profile()->create([
             'title' => $data['title'],

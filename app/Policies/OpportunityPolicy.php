@@ -30,8 +30,8 @@ class OpportunityPolicy
      */
     public function view(User $user, opportunity $opportunity)
     {
-//        return auth()->user()->id == $opportunity->user_id;
-        return $user->id == $opportunity->user_id;
+        return auth()->user()->id == $opportunity->user_id;
+//        return $user->id == $opportunity->user_id;
     }
 
     /**

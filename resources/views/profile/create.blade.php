@@ -170,7 +170,7 @@
 {{--                                    <option value="1">Data Analysis</option>--}}
 {{--                                    <option value="2">Research</option>--}}
 {{--                                    <option value="3">Machine Learning (Python)</option>--}}
-                                    @forelse($skills as $skill)
+                                    @forelse(App\skills::all() as $skill)
                                         <option value="{{ $skill->id }}">{{ $skill->skill }}</option>
                                     @empty
                                         No skills added to database

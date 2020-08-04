@@ -37,7 +37,11 @@ class OpportunitiesController extends Controller
         ]);
 
         if(request('media')){
-            $media = request('media')->store( 'uploads/opportunities', 'public');
+            try {
+                $media = request('media')->store( 'uploads/opportunities', 'public');
+            } catch (\Exception $e) {
+                dd($e);
+            }
         }else{
             $media = '';
         }

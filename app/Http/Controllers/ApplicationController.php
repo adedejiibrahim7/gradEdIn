@@ -30,14 +30,14 @@ class ApplicationController extends Controller
     public function apply(opportunity $opportunity){
 //        dd(request()->all());
         if(request('resume')){
-//            $resume = request('resume')->store('uploads/application_docs', 'public');
-            $resume = Storage::disk('public')->put('uploads/application_docs', request('resume'));;
+            $resume = request('resume')->store('uploads/application_docs', 'public');
+//            $resume = Storage::disk('public')->put('uploads/application_docs', request('resume'));;
         }else{
             $resume = '';
         }
         if(request('cover_letter')){
-//            $cover_letter = request('cover_letter')->store('uploads/application_docs', 'public');
-            $cover_letter = Storage::disk('public')->put('uploads/application_docs', request('cover_letter'));
+            $cover_letter = request('cover_letter')->store('uploads/application_docs', 'public');
+//            $cover_letter = Storage::disk('public')->put('uploads/application_docs', request('cover_letter'));
         }else{
             $cover_letter = '';
         }

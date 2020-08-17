@@ -22,6 +22,13 @@
                             <div class="col-sm-6">{{ $opportunity->close }}</div>
                         </div>
                         <div>
+                            @forelse($tags as $tag)
+                                <span class="badge badge-info">{{ $tag->name  }}</span>
+                                @empty
+
+                                @endforelse
+                        </div>
+                        <div>
                             @if($opportunity->take_app)
 {{--                                <div class="row">--}}
 {{--                                <p>Apply Here</p>--}}

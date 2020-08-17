@@ -9,7 +9,7 @@
                     <div class="col-sm-4">
                         <div class="text-right">
 {{--                            <img src="/storage/{{ $profile->avatar }}" alt="media" class="img-fluid">--}}
-                            <img src="/uploads/profile/image/cSKfGPIOAwVlUtS6PkJd9a0WAQ7xM8AetsV1TvUD.jpeg" alt="avatar" class="avatar">
+                            <img src="/{{ $profile->avatar }}" alt="Profile Image" class="avatar">
                         </div>
 
                     </div>
@@ -31,10 +31,10 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <p><a href="/storage/{{ $profile->cv }}" target="_blank"><span class="fa fa-link"></span> CV</a></p>
+                                <p><a href="/{{ $profile->cv }}" target="_blank"><span class="fa fa-link"></span> CV</a></p>
                             </div>
                             <div class="col-sm-6">
-                                <p><a href="/storage/{{ $profile->cover_letter }}" target="_blank"><span class="fa fa-link"></span> Cover Letter</a></p>
+                                <p><a href="/{{ $profile->cover_letter }}" target="_blank"><span class="fa fa-link"></span> Cover Letter</a></p>
                             </div>
                         </div>
                     </div>

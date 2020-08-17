@@ -8,9 +8,9 @@
                 <p class=""><a href="/my-opportunities">My Opportunities</a></p>
                 <p class=""><a href="/opportunities/create">Post Opportunity</a></p>
                 <p class=""><a href="/my-applications">My Applications</a></p>
-                <p><a href="/profile/{{ auth()->user()->profile->id }}">My Profile</a></p>
+                <p><a href="/profile/{{ auth()->user()->id }}">My Profile</a></p>
             </div>
-            <div class="col-sm-8 m-auto ">
+            <div class="col-sm-8 m-auto p-20">
                     @if(Session::has('msg'))
                         <div class="alert alert-info">
                             <p>{{ Session::get("msg") }}  </p>
@@ -32,6 +32,13 @@
                             @else
                                 {{$opportunity->description}}
                             @endif
+                            <div>
+                                @forelse($opportunity->tags as $tag)
+                                    <span class="badge badge-info">{{ $tag->name  }}</span>
+                                @empty
+
+                                @endforelse
+                            </div>
 
 {{--                            <p class="">{{ $opportunity->description }}</p>--}}
 {{--                                <p class="">{{ $opportunity->take_app }}</p>--}}
@@ -45,6 +52,9 @@
                         None found
                     @endforelse
 
+            </div>
+            <div class="col-sm-2">
+{{--                <div class="display-4">Hello</div>--}}
             </div>
         </div>
     </div>

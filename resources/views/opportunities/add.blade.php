@@ -89,6 +89,14 @@
                                     <input type="checkbox" name="take_app" id="take_app" class="form-check-input">
                                     <label for="take_app" class="form-check-label">Take On-site Applications</label>
                                 </div>
+                                <div class="input-group mb-2">
+{{--                                    <div class="">--}}
+                                        <label for="tags">Tags</label>
+{{--                                    </div>--}}
+{{--                                    <div>--}}
+                                        <input type="text" class="form-control-lg" name="tags[]" data-role="tagsinput">
+{{--                                    </div>--}}
+                                </div>
 
                                 <div class="form-group text-center">
                                     <button type="submit" class="btn btn-primary btn-lg">Post</button>

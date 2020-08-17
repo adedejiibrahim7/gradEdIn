@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\opportunity;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class OpportunitiesController extends Controller
@@ -29,39 +30,44 @@ class OpportunitiesController extends Controller
     }
 
     public function store(){
-        $data = request()->validate([
-           'title' => ['required', 'string'],
-           'description' => ['required', 'string'],
-            'link' => '',
-            'open' => '',
-            'close' => '',
-        ]);
+        DB::transaction(function() {
 
-        if(request('media')){
-//            dd(request('media'));
-            try {
-                $media = request('media')->store( 'uploads/opportunities', 'public');
-//                $media = Storage::disk('public')->put('uploads/opportunities', request('media'));
-//                dd($media);
-            } catch (\Exception $e) {
-                dd($e);
+            $data = request()->validate([
+               'title' => ['required', 'string'],
+               'description' => ['required', 'string'],
+                'link' => '',
+                'open' => '',
+                'close' => '',
+                'tags.*' => '',
+            ]);
+
+            if(request('media')){
+    //            dd(request('media'));
+                try {
+                    $media = request('media')->store( 'uploads/opportunities', 'public');
+    //                $media = Storage::disk('public')->put('uploads/opportunities', request('media'));
+    //                dd($media);
+                } catch (\Exception $e) {
+                    dd($e);
+                }
+            }else{
+                $media = '';
             }
-        }else{
-            $media = '';
-        }
 
         $take_app = request('take_app') ? true : false;
-        $opportunity = auth()->user()->opportunities()->create([
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'link' => $data['link'],
-            'open' => $data['open'],
-            'close' => $data['close'],
-            'media' => $media,
-//            'media' => 'uploads/opportunities/6jHNLxQ5eOFQp0O1sRaUZRJMi2qEqDUBIgPujNrh.jpeg',
-//            'deleted_at' => null,
-            'take_app' => $take_app
-        ]);
+
+            $opportunity = auth()->user()->opportunities()->create([
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'link' => $data['link'],
+                'open' => $data['open'],
+                'close' => $data['close'],
+                'media' => $media,
+                'take_app' => $take_app
+            ]);
+
+            $opportunity->tag($data['tags']);
+        });
 
         session()->flash('msg', 'Opportunity Posted');
         return redirect('/home');
@@ -69,7 +75,8 @@ class OpportunitiesController extends Controller
 
     public function show(opportunity $opportunity){
 //        dd($opportunity);
-        return view('opportunities.show', compact('opportunity'));
+        $tags = $opportunity->tags;
+        return view('opportunities.show', compact('opportunity', 'tags'));
     }
     public function myOpportunities(){
 

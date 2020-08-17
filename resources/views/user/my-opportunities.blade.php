@@ -27,10 +27,13 @@
                             @else
                                 {{$opportunity->description}}
                             @endif
-{{--                            <div class="row align-text-bottom">--}}
-{{--                                <div class="col-sm-6">{{ $profile->open }}</div>--}}
-{{--                                <div class="col-sm-6">{{ $profile->close }}</div>--}}
-{{--                            </div>--}}
+                            <div>
+                                @forelse($opportunity->tags as $tag)
+                                    <span class="badge badge-info">{{ $tag->name  }}</span>
+                                @empty
+
+                                @endforelse
+                            </div>
                         </div>
                     </div>
                     @empty

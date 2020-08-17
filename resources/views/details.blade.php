@@ -165,16 +165,16 @@
                         <div class="col-sm-4">
                             <p class="font-weight-bold">Skills & Competencies</p>
                             <hr>
-                            <div class="form-group">
-                                <select name="skills[]" id="skills" class="select2 select2-multiple" multiple="multiple" data-placeholder="Select Skills">
-                                    <option value="1">Data Analysis</option>
-                                    <option value="2">Research</option>
-                                    <option value="3">Machine Learning (Python)</option>
-                                </select>
-                                @error('skills')
-                                    <span>{{ $message }}</span>
-                                @enderror
-                            </div>
+{{--                            <div class="form-group">--}}
+{{--                                <select name="skills[]" id="skills" class="select2 select2-multiple" multiple="multiple" data-placeholder="Select Skills">--}}
+{{--                                    <option value="1">Data Analysis</option>--}}
+{{--                                    <option value="2">Research</option>--}}
+{{--                                    <option value="3">Machine Learning (Python)</option>--}}
+{{--                                </select>--}}
+{{--                                @error('skills')--}}
+{{--                                    <span>{{ $message }}</span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                     <div class="row">

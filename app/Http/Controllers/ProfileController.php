@@ -152,7 +152,7 @@ class ProfileController extends Controller
                 }
 
 
-                $profile->skills()->attach($data['skills']);
+//                $profile->skills()->attach($data['skills']);
             });
 
 //        }

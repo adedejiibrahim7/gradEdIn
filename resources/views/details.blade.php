@@ -52,7 +52,7 @@
                                 <label for="lastName">Last Name</label>
                                 <input type="text" name="lastName" class="form-control @error('lastName') is-invalid @enderror" value="{{ old('lastName') }}">
 
-                                @error('firstName')
+                                @error('lastName')
                                 <span>{{ $message }}</span>
                                 @enderror
                             </div>

@@ -18,11 +18,7 @@ class ApplicationController extends Controller
     public function index(opportunity $opportunity){
         $this->authorize('view', $opportunity);
         $applicant_profiles = Application::where('opportunity_id', $opportunity->id)->pluck('profile_id');
-//        $applicant_profiles = Application::where('opportunity_id', $opportunity->id)->get();
-//        $applications = Application::where('opportunity_id', $opportunity->id)->get();
         $profiles = profile::all()->whereIn('id', $applicant_profiles);
-//        dd($profiles[0]->application[0]->resume);
-//        dd(application::whereIn('profile_id', $applicant_profiles))->get();
         $resume = Application::where('opportunity_id', $opportunity->id)->whereIn('profile_id', $applicant_profiles)->pluck('resume');
         return view('applications.index', compact('profiles', 'opportunity'));
     }

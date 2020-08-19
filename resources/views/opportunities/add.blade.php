@@ -43,6 +43,10 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea type="text" name="description" rows="10" cols="100" class="form-control @error('description') is-invalid @enderror" ></textarea>
+{{--                                <div id="editor">--}}
+
+{{--                                </div>--}}
+{{--                                <input type="hidden" name="description" id="description">--}}
                                 @error('description')
                                     <span>{{$message}}</span>
                                 @enderror
@@ -109,3 +113,18 @@
     </div>
 </div>
 @endsection
+
+@section('quil')
+    <script type="text/javascript">
+        // alert("kk");
+        var quill = new Quill('#editor', {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                ]
+            },
+            theme: 'snow'
+        });
+    </script>
+    @endsection

@@ -14,7 +14,7 @@
                 @forelse($opportunities as $opportunity)
                     <div class="row panel mb-3">
                         <div class="col-sm-4">
-                            <img src="/storage/{{ $opportunity->media }}" alt="media" class=" card-img">
+                            <img src="/{{ $opportunity->media }}" alt="media" class=" card-img">
                         </div>
                         <div class="col-sm-8">
                             <p class="font-weight-bold"><a href="/applications/{{ $opportunity->id }}">{{ $opportunity->title }}</a></p>

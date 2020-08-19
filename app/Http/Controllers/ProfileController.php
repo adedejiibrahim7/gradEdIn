@@ -15,10 +15,16 @@ use Illuminate\Support\Facades\DB;
 class ProfileController extends Controller
 {
     public function create(){
-        $profile = profile::where('user_id', auth()->user()->id)->count();
+        $profile = profile::where('user_id', auth()->user()->id)->get();
+        $user = user::where('id', auth()->user()->id)->first();
         $skills = skills::all();
-        if($profile == 0){
-            return view ('profile.create', compact('skills'));
+        if($profile->count() == 0){
+            if($user->user_type == "recruiter"){
+                return view ('user.employer-details');
+
+            }else{
+                return view ('profile.create', compact('skills'));
+            }
         }else{
             return redirect("/profile/edit/".auth()->user()->profile->id);
         }

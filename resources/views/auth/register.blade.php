@@ -61,6 +61,19 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                             </div>
                         </div>
+                        <div class="">
+                            <p class="">Here to:</p>
+                            <div class="input-group row pl-4 pb-3">
+                                <div class="form-check col">
+                                    <input type="radio" class="form-check-input" id="seeker" value="seeker" name="purpose">
+                                    <label class="form-check-label" for="seeker">Seek Opportunities</label>
+                                </div>
+                                <div class="form-check col">
+                                    <input type="radio" class="form-check-input" id="employer" value="employer" name="purpose">
+                                    <label class="form-check-label" for="employer">Recruit Talents</label>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

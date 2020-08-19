@@ -15,13 +15,21 @@ class OpportunitiesController extends Controller
     }
 
     public function index(){
-        if(auth()->user()->profile !== null){
-            $opportunities = opportunity::all();
-            return view('opportunities.index', compact('opportunities'));
-//            return view('opportunities/index');
-        }else{
-            return view('profile.create');
-        }
+
+//        if(auth()->user()->profile){
+//            $opportunities = opportunity::all();
+//            return view('opportunities.index', compact('opportunities'));
+//        }elseif(auth()->user()->employerprofile){
+//            return view('employer.index');
+//        }
+//        else{
+//            $type = auth()->user()->user_type;
+//            if($type == "seeker"){
+//                return view('profile.create');
+//            }elseif($type == "recruiter"){
+//                return view('user.employer-details');
+//            }
+//        }
 
     }
 

@@ -10943,8 +10943,8 @@ a.text-dark:focus {
 
 .panel-large {
   padding: 25px;
-  border: 1px solid #b0d4f1;
-  box-shadow: #b0d4f1;
+  border: 1px solid whitesmoke;
+  box-shadow: 2px 2px 2px whitesmoke;
 }
 
 label {

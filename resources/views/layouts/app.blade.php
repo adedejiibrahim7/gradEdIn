@@ -24,10 +24,9 @@
     <link href="{{ asset('assets/components/custom-select/custom-select.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/components/switchery/dist/switchery.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
-{{--    <link href="{{ asset('assets/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}" rel="stylesheet" />--}}
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">--}}
-{{--    <link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">--}}
+   <link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -38,7 +37,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm">
             <div class="container">
 {{--                <div class="logo">--}}
-                    <a class="pull-left " href="{{ url('/') }}">
+                    <a class="navbar-left " href="{{ url('/') }}">
                         <img src="{{ asset('img/gradedin7.png') }}" alt="GradEdIn" >
 {{--                        GradEdIn--}}
                     </a>
@@ -104,8 +103,12 @@
     <script src="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript" ></script>
 {{--    <script src="{{ asset('assets/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}" ></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" type="text/javascript" defer></script>
-    @yield('add_form')
+<script type="text/javascript" src="https://cdn.quilljs.com/1.3.6/quill.js" ></script>
+
+@yield('add_form')
 @yield('read_more')
+@yield('oneScript')
+@yield('quil')
     <script>
         $(function() {
             // alert("kk");

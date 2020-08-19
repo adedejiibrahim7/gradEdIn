@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
 //        'name',
-        'email', 'password',
+        'email', 'password', 'user_type'
     ];
 
     /**
@@ -47,5 +47,8 @@ class User extends Authenticatable
     }
     public function Application(){
         return $this->hasMany(Application::class);
+    }
+    public function EmployerProfile(){
+        return $this->hasOne(EmployerProfile::class);
     }
 }

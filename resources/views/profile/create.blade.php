@@ -15,10 +15,6 @@
                     @csrf
                     <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
                     <div class="form-group align-content-center m-auto">
-{{--                        <div class=" p-2">--}}
-{{--                            <label for="avatar" class="custom-file-label">Profile Image</label>--}}
-{{--                            <input type="file" name="avatar" id="avatar" class=" dropify" data-allowed-file-extensions="jpg png jpeg">--}}
-{{--                            <input type="file" name="avatar" id="avatar" class="custom-file-input" >--}}
                             <p style="height:150px; width: 150px; font-size: 100px; color: gray; background-color: aliceblue; border-radius:50%;" class="text-center m-auto">
                                 <span class="fa fa-user text-center"  id="profile_photo"></span>
                             </p>
@@ -34,8 +30,6 @@
                                     </div>
                                 @enderror
                             </div>
-
-{{--                        </div>--}}
                     </div>
                     <div class="row m-3">
                         <div class="col-sm-4"></div>

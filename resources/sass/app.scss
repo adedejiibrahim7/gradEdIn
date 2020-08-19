@@ -20,8 +20,9 @@
 }
 .panel-large{
     padding: 25px;
-    border: 1px solid #b0d4f1;
-    box-shadow: #b0d4f1;
+    border: 1px solid whitesmoke;
+    //box-shadow: 2px #ffa867;
+    box-shadow: 2px 2px 2px whitesmoke;
 }
 label{
     font-family: Arial, sans-serif;
@@ -36,6 +37,7 @@ label{
     max-width: 100%;
     max-height: 100%;
 }
+
 .form-control-small{
     display: block;
     width: 80%;

@@ -19,9 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'OpportunitiesController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/profile-setup', 'ProfileController@create');
 Route::post('/p', 'ProfileController@store');
+Route::post('/ep', 'EmployerProfileController@store');
 Route::get('/opportunities/create', 'OpportunitiesController@create');
 Route::get('/opportunities', 'OpportunitiesController@index');
 Route::get('/opportunities/{opportunity}', 'OpportunitiesController@show');

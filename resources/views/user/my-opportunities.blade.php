@@ -13,10 +13,11 @@
                 <div class="top-display">Opportunities Posted</div>
                 @forelse($opportunities as $opportunity)
                     <div class="row panel mb-3">
-                        <div class="col-sm-4">
-                            <img src="/{{ $opportunity->media }}" alt="media" class=" card-img">
-                        </div>
-                        <div class="col-sm-8">
+{{--                        <div class="col-sm-4">--}}
+{{--                            <img src="/{{ $opportunity->media }}" alt="media" class=" card-img">--}}
+{{--                        </div>--}}
+                        <div class="col">
+                            <p class="font-weight-bold">You</p>
                             <p class="font-weight-bold"><a href="/applications/{{ $opportunity->id }}">{{ $opportunity->title }}</a></p>
 {{--                            <p class="">{{ $opportunity->description }}</p>--}}
                             @if(strlen($opportunity->description) > 100)

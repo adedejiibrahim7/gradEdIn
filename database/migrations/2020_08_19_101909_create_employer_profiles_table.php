@@ -22,7 +22,6 @@ class CreateEmployerProfilesTable extends Migration
             $table->string('last_name');
             $table->string('institution_name');
             $table->string('institution_website');
-//            $table->string('position');
             $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
             $table->string('location')->nullable();

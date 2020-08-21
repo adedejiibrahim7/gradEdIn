@@ -5,10 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <p class=""><a href="/my-opportunities">My Opportunities</a></p>
-                <p class=""><a href="/opportunities/create">Post Opportunity</a></p>
-                <p class=""><a href="/my-applications">My Applications</a></p>
-                <p><a href="/profile/{{ auth()->user()->id }}">My Profile</a></p>
+{{--                <p class=""><a href="/my-opportunities">My Opportunities</a></p>--}}
+{{--                <p class=""><a href="/opportunities/create">Post Opportunity</a></p>--}}
+{{--                <p class=""><a href="/my-applications">My Applications</a></p>--}}
+{{--                <p><a href="/profile/{{ auth()->user()->id }}">My Profile</a></p>--}}
             </div>
             <div class="col-sm-8 m-auto p-20">
                     @if(Session::has('msg'))
@@ -18,11 +18,12 @@
                     @endif
                 <div class="top-display">Opportunities</div>
                 @forelse($opportunities as $opportunity)
-                    <div class="row panel mb-3">
-                        <div class="col-sm-4">
-                            <img src="/{{ $opportunity->media }}" alt="media" class=" card-img">
+                    <div class=" panel mb-3">
+                        <div class="">
+                            <p class="font-weight-bold">{{ $opportunity->user->employerprofile['first_name'] }} {{ $opportunity->user->employerprofile['last_name'] }} </p>
+                            <p class="small">{{ $opportunity->user->employerprofile['position'] }}, {{ strtoupper( $opportunity->user->employerprofile['institution_name']) }}</p>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="">
                             <p class="font-weight-bold"><a href="/opportunities/{{ $opportunity->id }}">{{ $opportunity->title }}</a></p>
                             @if(strlen($opportunity->description) > 100)
                                 {{substr($opportunity->description,0,100)}}
@@ -52,6 +53,11 @@
                         None found
                     @endforelse
 
+                <div>
+                    <ul class="pagination">
+                        {{ $opportunities->links() }}
+                    </ul>
+                </div>
             </div>
             <div class="col-sm-2">
 {{--                <div class="display-4">Hello</div>--}}

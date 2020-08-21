@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class profile extends Model
 {
+    use \Conner\Tagging\Taggable;
+
     protected $guarded = [];
     public function User(){
         return $this->belongsTo(User::class);

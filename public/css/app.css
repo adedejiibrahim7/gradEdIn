@@ -10986,11 +10986,29 @@ label {
 .avatar {
   max-height: 100px;
   max-width: 100px;
-  border-radius: 50px;
+  border-radius: 50%;
+}
+
+.avatar-small {
+  max-height: 70px;
+  max-width: 70px;
+  border-radius: 50%;
 }
 
 .avatar > .dropify {
   max-height: 100px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #25259f;
+}
+
+.star {
+  color: darkgrey;
+}
+
+.star-blue {
+  color: blue;
 }
 
 .panel {
@@ -11064,7 +11082,7 @@ label {
 }
 
 .label-info {
-  background-color: #1b4b72;
+  background-color: #070775;
   padding: 3px;
   margin: 2px 3px 3px;
 }

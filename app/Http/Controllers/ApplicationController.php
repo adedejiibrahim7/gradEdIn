@@ -19,6 +19,9 @@ class ApplicationController extends Controller
         $this->authorize('view', $opportunity);
         $applicant_profiles = Application::where('opportunity_id', $opportunity->id)->pluck('profile_id');
         $profiles = profile::all()->whereIn('id', $applicant_profiles);
+        $starred = Application::where('opportunity_id', $opportunity->id)->where('status', 'starred')->pluck('profile_id');
+        $starred_profiles = profile::all()->whereIn('id', $starred);
+
         $resume = Application::where('opportunity_id', $opportunity->id)->whereIn('profile_id', $applicant_profiles)->pluck('resume');
         return view('applications.index', compact('profiles', 'opportunity'));
     }
@@ -27,7 +30,7 @@ class ApplicationController extends Controller
 //        dd(request()->all());
         if(request('resume')){
             request()->validate([
-               'resume' => ['mime:doc,docx,pdf', 'max:2048']
+               'resume' => ['mimes:doc,docx,pdf', 'max:2048']
             ]);
             $resume = request('resume')->store('uploads/application_docs', 'public');
 
@@ -37,7 +40,7 @@ class ApplicationController extends Controller
         }
         if(request('cover_letter')){
             request()->validate([
-                'cover_letter' => ['mime:doc,docx,pdf', 'max;2048']
+                'cover_letter' => ['mimes:doc,docx,pdf', 'max:2048']
             ]);
             $cover_letter = request('cover_letter')->store('uploads/application_docs', 'public');
 //            $cover_letter = Storage::disk('public')->put('uploads/application_docs', request('cover_letter'));
@@ -65,11 +68,22 @@ class ApplicationController extends Controller
         session()->flash('msg', $str);
         $opportunities = opportunity::all();
 //        return view('opportunities.index', compact('opportunities'));
-        return redirect('/opportunities');
+        return redirect('/home');
     }
 
     public function myApplications(){
         $applications = Application::where('profile_id', auth()->user()->profile->id)->paginate(10);
         return view('user/applications', compact('applications'));
+    }
+    public function star(Application $application){
+        if($application->status == "pending"){
+            $application->status = "starred";
+            $application->save();
+            return "starred";
+        }elseif ($application->status == "starred"){
+            $application->status = "pending";
+            $application->save();
+            return "unstarred";
+        }
     }
 }

@@ -29,7 +29,8 @@ class EmployerProfileController extends Controller
             'last_name' => $data['lastName'],
             'institution_name' => $data['institution'],
             'institution_website' => $data['institution'],
-            'phone' => $data['phone']
+            'phone' => $data['phone'],
+            'position' => $data['position']
         ]);
 
         session()->flash('msg', 'Profile Created!');

@@ -17,10 +17,12 @@ class CreateEmployerProfilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('title')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('institution_name');
             $table->string('institution_website');
+            $table->string('position');
             $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
             $table->string('location')->nullable();

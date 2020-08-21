@@ -29,20 +29,12 @@ class ProfileController extends Controller
             return redirect("/profile/edit/".auth()->user()->profile->id);
         }
     }
-    public function show(User $user){
-//        $profile = profile::all()->whereIn('user_id', [$user->id]);
-        $profile = $user->profile;
-//         $profile = profile::where('user_id', $user->id)->get();
-//        dd($profile);
-//        $skills = skills::where('profile_id', $profile->id);
-//        dd($profile->avatar);
+    public function show($profile){
+        $profile = Profile::find($profile);
         $skills = $profile->skills;
-//        $certifications = $prof
-//        dd($skills);
+
         $academic_history = academic_history::where('profile_id', $profile->id)->get();
-//        $academic_history = $user->profile->academic_history;
-//        dd($academic_history);
-//
+
         return view('profile.show', compact('profile', 'academic_history', 'skills'));
     }
     public function __construct()
@@ -89,10 +81,11 @@ class ProfileController extends Controller
                     'certification.*' => ['required', 'min:3'],
                     'start.*' => 'required',
                     'end.*' => 'required',
-                    'skills' => '',
+                    'skills.*' => '',
                     'avatar' => ['required', 'image', 'mimes:jpeg,jpg,png,bmp', 'max:2048'],
                     'cv' => ['required', 'mimes:doc,docx,pdf', 'max:2048'],
                     'cover_letter' => ['required', 'mimes:doc,docx,pdf', 'max:2048'],
+
 //                'school' => ['required', 'string', 'min:3'],
                 ]);
 //                print_r($data);
@@ -113,6 +106,8 @@ class ProfileController extends Controller
                     'cv' => $cv,
                     'cover_letter' => $cover_letter,
                 ]);
+
+                $profile->tag($data['skills']);
 
                 if(request('ielts') == 'on'){
                     $ielts_score = request()->validate([ 'ielts_score' => 'required' ]);

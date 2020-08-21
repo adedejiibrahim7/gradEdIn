@@ -34,7 +34,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 {{--                <div class="logo">--}}
                     <a class="navbar-left " href="{{ url('/') }}">
@@ -66,13 +66,37 @@
                                 </li>
                             @endif
                         @else
+
+                            @if(auth()->user()->employerprofile)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/home">Dashboard</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/my-openings">Openings Posted</a>
+                                </li>
+
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="">Profile</a>--}}
+{{--                                </li>--}}
+
+                            @elseif(auth()->user()->profile)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/my-applications">My Applications</a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                     <span class="fa fa-user"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                   @if(auth()->user()->employerprofile)
+                                        <a href="#" class="dropdown-item">My Profile</a>
+                                    @elseif(auth()->user()->profile)
+                                        <a href="/profile/{{ auth()->user()->profile }}" class="dropdown-item">My Profile</a>
+                                    @endif
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -83,6 +107,7 @@
                                     </form>
                                 </div>
                             </li>
+
                         @endguest
                     </ul>
                 </div>

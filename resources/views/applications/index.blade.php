@@ -10,9 +10,9 @@
                             <p>{{ Session::get("msg") }}  </p>
                         </div>
                     @endif
-{{--                <div class="display-4">Hello</div>--}}
+                <div class="top-display">Applications Received for  Opening</div>
                 @forelse($profiles as $profile)
-                    <div class="row panel mb-3">
+                    <div class="row panel mb-3 mt-1">
                         <div class="col-sm-4">
                             <img src="/{{ $profile->avatar }}" alt="media" class=" card-img">
                         </div>
@@ -42,9 +42,10 @@
                                         <a href="/storage/{{ $profile->cover_letter }}">Cover Letter (General)</a>
                                     @endif
                                 </div>
-                                {{--                                <div class="col-sm-6">{{ $profile->open }}</div>--}}
-                                {{--                                <div class="col-sm-6">{{ $profile->close }}</div>--}}
+
                             </div>
+                            <star-component status="{{ $profile->application[0]->status }}" application="{{ $profile->application[0]->id }}"></star-component>
+
                         </div>
                     </div>
                     @empty

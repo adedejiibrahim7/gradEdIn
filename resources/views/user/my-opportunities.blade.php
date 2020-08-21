@@ -17,7 +17,12 @@
 {{--                            <img src="/{{ $opportunity->media }}" alt="media" class=" card-img">--}}
 {{--                        </div>--}}
                         <div class="col">
-                            <p class="font-weight-bold">You</p>
+                            <div>
+{{--                                <div style="" class="" >--}}
+{{--                                    <img src="{{ auth()->user()->EmployerProfile->avatar }}" alt="" class="avatar-small" style="">--}}
+{{--                                </div>--}}
+                                <p class="font-weight-bold">You</p>
+                            </div>
                             <p class="font-weight-bold"><a href="/applications/{{ $opportunity->id }}">{{ $opportunity->title }}</a></p>
 {{--                            <p class="">{{ $opportunity->description }}</p>--}}
                             @if(strlen($opportunity->description) > 100)

@@ -100,7 +100,7 @@
 
                             <hr>
                                 <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-8">
                                     <div class="text-left academic_history" id="root">
                                         <div class="form-group">
                                             <label for="school">University</label>
@@ -163,7 +163,7 @@
                                     </div>
                                     <hr>
                                 </div>
-                                <div class="col-sm-6"></div>
+                                <div class="col-sm-4"></div>
 
                             </div>
                         </div>

@@ -94,7 +94,7 @@
                                    @if(auth()->user()->employerprofile)
                                         <a href="#" class="dropdown-item">My Profile</a>
                                     @elseif(auth()->user()->profile)
-                                        <a href="/profile/{{ auth()->user()->profile }}" class="dropdown-item">My Profile</a>
+                                        <a href="/profile/{{ auth()->user()->id }}" class="dropdown-item">My Profile</a>
                                     @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

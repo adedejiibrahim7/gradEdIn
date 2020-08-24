@@ -43,40 +43,52 @@
                     @forelse($applicants as $applicant)
                         @foreach($profiles as $profile)
                             <div class="p-3">
-                                <div class="row panel mb-3">
-                                    <div class="col-sm-4">
-                                        <img src="/{{ $profile->avatar }}" alt="media" class=" card-img">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <p class="font-weight-bold"><a href="/profile/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>
-                                        @if(strlen($profile->bio) > 150)
-                                            {{substr($profile->bio,0,150)}}
-                                            <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
-                                            <span class="read-more-content"> {{substr($profile->bio,150,strlen($profile->bio))}}
-                                <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
-                                        @else
-                                            {{$profile->bio}}
-                                        @endif
 
-                                        <div class="row align-text-bottom">
-                                            <div class="col-sm-6">
-                                                @if($applicant->resume != "document")
-                                                    <a href="{{ $applicant->resume }}">Resume</a>
-                                                @else
-                                                    <a href="{{ $applicant->cv }}">CV</a>
-                                                @endif
+
+                                <div class="panel">
+{{--                                    <div class="panel-header">--}}
+{{--                                        <p class="card-title" style="background-color: blue; color: white;">{{ $applicant->opportunity->title }}</p>--}}
+{{--                                    </div>--}}
+
+                                    <div class="row  mb-3">
+                                        <div class="col-sm-4">
+                                            <img src="/{{ $profile->avatar }}" alt="media" class=" card-img">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <p class="font-weight-bold"><a href="/profile/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>
+                                            @if(strlen($profile->bio) > 150)
+                                                {{substr($profile->bio,0,150)}}
+                                                <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
+                                                <span class="read-more-content"> {{substr($profile->bio,150,strlen($profile->bio))}}
+                                <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
+                                            @else
+                                                {{$profile->bio}}
+                                            @endif
+
+                                            <div class="row align-text-bottom">
+                                                <div class="col-sm-6">
+                                                    @if($applicant->resume != "document")
+                                                        <a href="{{ $applicant->resume }}">Resume</a>
+                                                    @else
+                                                        <a href="{{ $applicant->cv }}">CV</a>
+                                                    @endif
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    @if($applicant->cover_letter != "document")
+                                                        <a href="{{ $applicant->cover_letter }}">Cover Letter</a>
+                                                    @else
+                                                        <a href="{{ $applicant->cover_letter }}">Cover Letter (General)</a>
+                                                    @endif
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                @if($applicant->cover_letter != "document")
-                                                    <a href="{{ $applicant->cover_letter }}">Cover Letter</a>
-                                                @else
-                                                    <a href="{{ $applicant->cover_letter }}">Cover Letter (General)</a>
-                                                @endif
+                                            <star-component status="{{ $applicant->status }}" application="{{ $applicant->id }}"></star-component>
+                                            <div class="text-right" style="">
+                                                <p class="card-title" >Application for: <span class="font-weight-bold">{{ $applicant->opportunity->title }}</span></p>
                                             </div>
                                         </div>
-                                        <star-component status="{{ $applicant->status }}" application="{{ $applicant->id }}"></star-component>
                                     </div>
                                 </div>
+
 
                             </div>
                         @endforeach

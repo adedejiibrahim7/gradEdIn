@@ -23,7 +23,7 @@ class ApplicationController extends Controller
         $starred_profiles = profile::all()->whereIn('id', $starred);
 
         $resume = Application::where('opportunity_id', $opportunity->id)->whereIn('profile_id', $applicant_profiles)->pluck('resume');
-        return view('applications.index', compact('profiles', 'opportunity'));
+        return view('applications.index', compact('profiles', 'opportunity', 'starred', 'starred_profiles'));
     }
 
     public function apply(opportunity $opportunity){

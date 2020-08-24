@@ -27,17 +27,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->profile){
+        if(auth()->user()->user_type == "seeker" && auth()->user()->profile){
             $opportunities = opportunity::latest()->paginate(10);
-//            dd($opportunities);
             return view('opportunities.index', compact('opportunities'));
-        }elseif(auth()->user()->employerprofile){
+        }elseif(auth()->user()->user_type == "recruiter" && auth()->user()->employerprofile){
             $opportunities = opportunity::where('user_id', auth()->user()->id)->pluck('id');
             $applicants = Application::whereIn('opportunity_id', $opportunities)->get();
             $id = Application::whereIn('opportunity_id', $opportunities)->pluck('profile_id');
             $profiles = profile::whereIn('id', $id)->get();
-//            dd(array_merge($applicants->toArray(), $docs->toArray()));
-//            dd($profiles);
             return view('employer.index', compact('applicants', 'profiles'));
         }
         else{

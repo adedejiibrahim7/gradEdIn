@@ -91,9 +91,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                   @if(auth()->user()->employerprofile)
+                                   @if(auth()->user()->user_type == "recruiter")
                                         <a href="#" class="dropdown-item">My Profile</a>
-                                    @elseif(auth()->user()->profile)
+                                    @elseif(auth()->user()->user_type = "seeker")
                                         <a href="/profile/{{ auth()->user()->id }}" class="dropdown-item">My Profile</a>
                                     @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"

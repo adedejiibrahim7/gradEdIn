@@ -38,8 +38,9 @@ class OpportunitiesController extends Controller
     }
 
     public function store(){
+//        dd(request()->all());
         DB::transaction(function() {
-
+//            dd(request()->all());
             $data = request()->validate([
                'title' => ['required', 'string'],
                'description' => ['required', 'string'],
@@ -49,36 +50,37 @@ class OpportunitiesController extends Controller
                 'tags.*' => '',
             ]);
 
-            if(request('media')){
-    //            dd(request('media'));
-                try {
-                    $media = request('media')->store( 'uploads/opportunities', 'public');
-    //                $media = Storage::disk('public')->put('uploads/opportunities', request('media'));
-    //                dd($media);
-                } catch (\Exception $e) {
-                    dd($e);
-                }
-            }else{
-                $media = '';
-            }
-
+//            if(request('media')){
+//    //            dd(request('media'));
+//                try {
+//                    $media = request('media')->store( 'uploads/opportunities', 'public');
+//    //                $media = Storage::disk('public')->put('uploads/opportunities', request('media'));
+//    //                dd($media);
+//                } catch (\Exception $e) {
+//                    dd($e);
+//                }
+//            }else{
+//                $media = '';
+//            }
+//        $open  = $data['open']
         $take_app = request('take_app') ? true : false;
 
             $opportunity = auth()->user()->opportunities()->create([
                 'title' => $data['title'],
                 'description' => $data['description'],
                 'link' => $data['link'],
-                'open' => $data['open'],
-                'close' => $data['close'],
-                'media' => $media,
+                'open' => $data['open'] !== null ? $data['open'] : null,
+                'close' => $data['close'] !== null ? $data['close'] : null,
+//                'media' => $media,
                 'take_app' => $take_app
             ]);
 
             $opportunity->tag($data['tags']);
         });
 
-        session()->flash('msg', 'Opportunity Posted');
-        return redirect('/home');
+//        session()->flash('msg', 'Opportunity Posted');
+//        return redirect('/home');
+//        return "Yes";
     }
 
     public function show(opportunity $opportunity){

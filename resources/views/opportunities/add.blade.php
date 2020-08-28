@@ -8,14 +8,17 @@
                 <p>{{ Session::get("msg") }}  </p>
             </div>
         @endif
+        <div id="result">
+
+        </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="panel p-20">
-                <div class=" top-display text-center">Post an opportunity</div>
+                <div class=" top-display text-center">Post an Opening</div>
 
                 <div class="panel-body">
-                    <form action="/o" method="post" enctype="multipart/form-data">
+                    <form action="/o" method="post" enctype="multipart/form-data" id="form">
                         @csrf
                         <div class="">
                             <div class="">
@@ -28,25 +31,14 @@
                                         @enderror
                                     </div>
                                 </div>
-{{--                                <div class="col-sm-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="media">Media</label>--}}
-{{--                                        <input type="file" name="media" class="form-control-file @error('media') is-invalid @enderror" >--}}
-{{--                                        @error('media')--}}
-{{--                                        <span>{{$message}}</span>--}}
-{{--                                        @enderror--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
 
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea type="text" name="description" rows="10" cols="100" class="form-control @error('description') is-invalid @enderror" ></textarea>
-{{--                                <div id="editor">--}}
+{{--                                <textarea type="text" name="description" rows="10" cols="100" class="form-control @error('description') is-invalid @enderror" ></textarea>--}}
+                                <div id="editor">
 
-{{--                                </div>--}}
-{{--                                <input type="hidden" name="description" id="description">--}}
+                                </div>
+                                <input type="hidden" name="description" id="description">
                                 @error('description')
                                     <span>{{$message}}</span>
                                 @enderror
@@ -60,13 +52,6 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label for="media">Media (Optional) </label>
-                                <input type="file" name="media" class="form-control-file @error('media') is-invalid @enderror" accept="image/jpeg, image/png, image/jpg">
-                                @error('media')
-                                    <span>{{$message}}</span>
-                                @enderror
-                            </div>
 
                                 <b>Timeframe (Optional)</b>
                                 <hr>
@@ -103,7 +88,7 @@
                                 </div>
 
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">Post</button>
+                                    <button type="submit" class="btn btn-primary btn-lg" id="post">Post</button>
                                 </div>
                         </div>
                     </form>
@@ -114,17 +99,85 @@
 </div>
 @endsection
 
-@section('quil')
+@section('quill')
     <script type="text/javascript">
         // alert("kk");
-        var quill = new Quill('#editor', {
-            modules: {
-                toolbar: [
-                    [{ header: [1, 2, false] }],
-                    ['bold', 'italic', 'underline'],
-                ]
-            },
-            theme: 'snow'
-        });
+        $(document).ready(function(){
+            var quill = new Quill('#editor', {
+                // modules: {
+                //     toolbar: [
+                //         [{ header: [1, 2, false] }],
+                //         ['bold', 'italic', 'underline'],
+                //     ]
+                // },
+                theme: 'snow'
+            });
+            // alert("Hello");
+            $("#post").click(function (e) {
+                e.preventDefault();
+                var t = $("#editor").children().html();
+                $("#description").val(t);
+                // alert($("#description").val());
+                // alert($("#description").val(t));
+                var form = $("#form")[0];
+                var formData = new FormData(form);
+                alert(formData);
+                $.ajax({
+                    url: '/o',
+                    type: 'post',
+                    async: false,
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    // dataType: 'json',
+                    beforeSend:function(){
+                        // alert("jk");
+                        $('#post').attr('disabled','disabled');
+                    },
+                    success: function (data) {
+                        // alert(data);
+                        $('#result').html('Gone!');
+                        $('#result').html('<div class="alert alert-success">Opening Posted.. redirecting</div>');
+                        window.location.href = "/home";
+                        // }
+                    },
+
+                    error:function(x,e) {
+                        if (x.status===0) {
+                            alert('You are offline!!\n Please Check Your Network.');
+                        } else if(x.status===404) {
+                            alert('Requested URL not found.');
+                        } else if(x.status===500) {
+                            alert('Internel Server Error.');
+                        } else if(e==='parsererror') {
+                            alert('Error.\nParsing JSON Request failed.');
+                        } else if(e==='timeout'){
+                            alert('Request Time out.');
+                        } else {
+                            var res = JSON.parse(x.responseText);
+                            alert(res);
+                        }
+                    }
+                });
+                return false;
+                $('#post').attr('disabled',false);
+
+            })
+            // var form = document.querySelector('form');
+            // form.onsubmit = function() {
+            //     event.preventDefault();
+            //     alert("hello");
+            //     // Populate hidden form on submit
+            //     var description = document.querySelector('input[name=description]');
+            //     description.value = JSON.stringify(quill.getContents());
+            //     alert(description.value);
+            //     // console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+            //
+            //     // No back end to actually submit to!
+            //     // alert('Open the console to see the submit data!')
+            //     return false;
+            // };
+        })
+
     </script>
-    @endsection
+@endsection

@@ -43,13 +43,7 @@
                     @forelse($applicants as $applicant)
                         @foreach($profiles as $profile)
                             <div class="p-3">
-
-
                                 <div class="panel">
-{{--                                    <div class="panel-header">--}}
-{{--                                        <p class="card-title" style="background-color: blue; color: white;">{{ $applicant->opportunity->title }}</p>--}}
-{{--                                    </div>--}}
-
                                     <div class="row  mb-3">
                                         <div class="col-sm-4">
                                             <img src="/{{ $profile->avatar }}" alt="media" class=" card-img">
@@ -97,11 +91,11 @@
                             <p class="top-display">You Have No Recent Applications</p>
                             <p>If you have an active job opening, applications are coming. Check back some other time</p>
                         </div>
+                    @endforelse
                 </div>
-                @endforelse
             </div>
 
-            </div>
+
             <div class="col-sm-2 text-center">
 {{--                <div class="display-4">Hello</div>--}}
                 <div class="text-center">

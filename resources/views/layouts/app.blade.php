@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 {{--                <div class="logo">--}}
-                    <a class="navbar-left " href="{{ url('/') }}">
+                    <a class="navbar-left " href="{{ url('/home') }}">
                         <img src="{{ asset('img/gradedin7.png') }}" alt="GradEdIn" >
 {{--                        GradEdIn--}}
                     </a>
@@ -96,7 +96,9 @@
                                     @elseif(auth()->user()->user_type = "seeker")
                                         <a href="/profile/{{ auth()->user()->id }}" class="dropdown-item">My Profile</a>
                                     @endif
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                       <a href="/settings" class="dropdown-item">Settings <span class="fa fa-gear"></span></a>
+
+                                       <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -120,27 +122,28 @@
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" defer></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js" ></script>
 
-    <script src="{{ asset('assets/components/dropify/dist/js/dropify.js') }}" defer></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" defer></script>--}}
+
+{{--    <script src="{{ asset('assets/components/dropify/dist/js/dropify.js') }}" defer></script>--}}
 {{--    <script src="/assets/components/dropify/dist/js/dropify.js"></script>--}}
-    <script src="{{ asset('assets/components/custom-select/custom-select.min.js') }}" type="text/javascript" ></script>
-    <script src="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript" ></script>
+{{--    <script src="{{ asset('assets/components/custom-select/custom-select.min.js') }}" type="text/javascript" ></script>--}}
+{{--    <script src="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript" ></script>--}}
 {{--    <script src="{{ asset('assets/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}" ></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" type="text/javascript" defer></script>
-<script type="text/javascript" src="https://cdn.quilljs.com/1.3.6/quill.js" ></script>
 
 @yield('add_form')
 @yield('read_more')
 @yield('oneScript')
-@yield('quil')
+@yield('quill')
     <script>
         $(function() {
             // alert("kk");
-            $('.dropify').dropify();
-            $(".select2").select2();
-            // $(".school").select2();
-
+        //     $('.dropify').dropify();
+        //     $(".select2").select2();
+        //     // $(".school").select2();
+        //
         });
     </script>
 </html>

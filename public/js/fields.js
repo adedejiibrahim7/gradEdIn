@@ -142,19 +142,6 @@ $(document).ready(function(){
             success: function (data) {
                // alert(data);
                 $('#result').html('Gone!');
-                // if(data.errors)
-                // {
-                //     // alert("jj");
-                //     var error_html = '';
-                //     for(var count = 0; count < data.errors.length; count++)
-                //     {
-                //         error_html += '<p>'+data.errosr[count]+'</p>';
-                //     }
-                //     $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
-                // }
-                // else
-                // {
-                    // dynamic_field(1);
                     $('#result').html('<div class="alert alert-success">Profile Created.. redirecting</div>');
                     window.location.href = "/home";
                 // }

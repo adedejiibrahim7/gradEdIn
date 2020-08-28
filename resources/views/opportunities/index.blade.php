@@ -20,23 +20,28 @@
                 @forelse($opportunities as $opportunity)
                     <div class=" panel mb-3">
                         <div class="">
-
-                            @if($opportunity->user->employerprofile)
-                                <p class="font-weight-bold">{{ $opportunity->user->employerprofile['first_name'] }} {{ $opportunity->user->employerprofile['last_name'] }} </p>
-                                <p class="small">{{ $opportunity->user->employerprofile['position'] }}, {{ strtoupper( $opportunity->user->employerprofile['institution_name']) }}</p>
-                            @endif
-
+                            @can('view', $opportunity)
+                                <p class="font-weight-bold">You</p>
+                            @endcan
+                            @cannot('view', $opportunity)
+                                @if($opportunity->user->employerprofile)
+                                    <p class="font-weight-bold">{{ $opportunity->user->employerprofile['first_name'] }} {{ $opportunity->user->employerprofile['last_name'] }} </p>
+                                    <p class="small">{{ $opportunity->user->employerprofile['position'] }}, {{ strtoupper( $opportunity->user->employerprofile['institution_name']) }}</p>
+                                @endif
+                            @endcannot
                         </div>
                         <div class="">
                             <p class="font-weight-bold"><a href="/opportunities/{{ $opportunity->id }}">{{ $opportunity->title }}</a></p>
-                            @if(strlen($opportunity->description) > 100)
-                                {{substr($opportunity->description,0,100)}}
-                                <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
-                                <span class="read-more-content"> {{substr($opportunity->description,100,strlen($opportunity->description))}}
+                            <div>
+                                @if(strlen($opportunity->description) > 100)
+                                    {!!  substr($opportunity->description,0,100) !!}
+                                    <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
+                                    <span class="read-more-content"> {!! substr($opportunity->description,100,strlen($opportunity->description)) !!}
                                 <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
-                            @else
-                                {{$opportunity->description}}
-                            @endif
+                                @else
+                                    {{$opportunity->description}}
+                                @endif
+                            </div>
                             <div>
                                 @forelse($opportunity->tags as $tag)
                                     <span class="badge badge-info">{{ $tag->name  }}</span>
@@ -47,10 +52,12 @@
 
 {{--                            <p class="">{{ $opportunity->description }}</p>--}}
 {{--                                <p class="">{{ $opportunity->take_app }}</p>--}}
+                            @if($opportunity->open !== null && $opportunity->close !== null)
                             <div class="row align-text-bottom mt-2">
                                 <div class="col-sm-6 small font-weight-bold">Opened: {{ date("D, d M Y", strtotime($opportunity->open)) }}</div>
                                 <div class="col-sm-6 small font-weight-bold">Closes: {{ date("D, d M Y", strtotime($opportunity->close)) }}</div>
                             </div>
+                                @endif
                         </div>
                     </div>
                     @empty

@@ -20,6 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/settings', 'UserController@settings');
+Route::post('/switch', 'UserController@switch');
 Route::get('/profile-setup', 'ProfileController@create');
 Route::post('/p', 'ProfileController@store');
 Route::post('/ep', 'EmployerProfileController@store');

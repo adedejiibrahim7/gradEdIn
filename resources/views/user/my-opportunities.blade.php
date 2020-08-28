@@ -26,9 +26,9 @@
                             <p class="font-weight-bold"><a href="/applications/{{ $opportunity->id }}">{{ $opportunity->title }}</a></p>
 {{--                            <p class="">{{ $opportunity->description }}</p>--}}
                             @if(strlen($opportunity->description) > 100)
-                                {{substr($opportunity->description,0,100)}}
+                                {!! substr($opportunity->description,0,100) !!}
                                 <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
-                                <span class="read-more-content"> {{substr($opportunity->description,100,strlen($opportunity->description))}}
+                                <span class="read-more-content"> {!! substr($opportunity->description,100,strlen($opportunity->description)) !!}
                                 <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
                             @else
                                 {{$opportunity->description}}

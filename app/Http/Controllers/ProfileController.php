@@ -29,9 +29,10 @@ class ProfileController extends Controller
             return redirect("/profile/edit/".auth()->user()->profile->id);
         }
     }
-    public function show($profile){
-        $profile = Profile::find($profile);
-        $skills = $profile->skills;
+    public function show(User $user){
+//        dd(auth()->user()->id);
+        $profile = $user->profile;
+        $skills = $profile->tags;
 
         $academic_history = academic_history::where('profile_id', $profile->id)->get();
 
@@ -43,6 +44,7 @@ class ProfileController extends Controller
     }
     public function edit(profile $profile){
         $this->authorize('update', $profile);
+        dd("Will be added soon");
 //        dd(auth()->user()->profile->user_id);
         $nn = $profile->skills->pluck('skill');
         $notSkills = skills::whereNotIn('skill', $nn)->get();

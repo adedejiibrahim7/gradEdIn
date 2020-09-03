@@ -7,6 +7,7 @@ use App\opportunity;
 use Illuminate\Http\Request;
 use App\user;
 use App\profile;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -29,13 +30,15 @@ class HomeController extends Controller
     {
         if(auth()->user()->user_type == "seeker" && auth()->user()->profile){
             $opportunities = opportunity::latest()->paginate(10);
-            return view('opportunities.index', compact('opportunities'));
+//            dd($opportunities);
+            $status = DB::table('saved_opening')->whereIn('opportunity_id', $opportunities->pluck('id'))->get();
+//            dd($status);
+            return view('opportunities.index', compact('opportunities', 'status'));
         }elseif(auth()->user()->user_type == "recruiter" && auth()->user()->employerprofile){
             $opportunities = opportunity::where('user_id', auth()->user()->id)->pluck('id');
-            $applicants = Application::whereIn('opportunity_id', $opportunities)->get();
-            $id = Application::whereIn('opportunity_id', $opportunities)->pluck('profile_id');
-            $profiles = profile::whereIn('id', $id)->get();
-            return view('employer.index', compact('applicants', 'profiles'));
+            $applications = Application::whereIn('opportunity_id', $opportunities)->get();
+//            dd($applications);
+            return view('employer.index', compact('applications'));
         }
         else{
             $type = auth()->user()->user_type;

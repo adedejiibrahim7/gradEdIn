@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
 use Illuminate\Http\Request;
 use App\opportunity;
 use Illuminate\Support\Facades\DB;
@@ -86,7 +87,14 @@ class OpportunitiesController extends Controller
     public function show(opportunity $opportunity){
 //        dd($opportunity);
         $tags = $opportunity->tags;
-        return view('opportunities.show', compact('opportunity', 'tags'));
+        $applied = Application::where('opportunity_id', $opportunity->id)->where('profile_id', auth()->user()->profile->id)->get();
+//        if(count($applied) == 0){
+//
+//            dd($applied);
+//        }else{
+//            dd("Hello");
+//        }
+        return view('opportunities.show', compact('opportunity', 'tags', 'applied'));
     }
     public function myOpportunities(){
 

@@ -40,44 +40,43 @@
                     </div>
                 </div>
                 <div>
-                    @forelse($applicants as $applicant)
-                        @foreach($profiles as $profile)
+                    @forelse($applications as $application)
                             <div class="p-3">
                                 <div class="panel">
                                     <div class="row  mb-3">
                                         <div class="col-sm-4">
-                                            <img src="/{{ $profile->avatar }}" alt="media" class=" card-img">
+                                            <img src="{{ $application->profile->avatar }}" alt="media" class=" card-img">
                                         </div>
                                         <div class="col-sm-8">
-                                            <p class="font-weight-bold"><a href="/profile/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>
-                                            @if(strlen($profile->bio) > 150)
-                                                {{substr($profile->bio,0,150)}}
+                                            <p class="font-weight-bold"><a href="/profile/{{ $application->profile->id }}">{{ $application->profile->first_name }}, {{ strtoupper($application->profile->last_name)  }}</a></p>
+                                            @if(strlen($application->profile->bio) > 150)
+                                                {{substr($application->profile->bio,0,150)}}
                                                 <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
-                                                <span class="read-more-content"> {{substr($profile->bio,150,strlen($profile->bio))}}
+                                                <span class="read-more-content"> {{substr($application->profile->bio,150,strlen($application->profile->bio))}}
                                 <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
                                             @else
-                                                {{$profile->bio}}
+                                                {{$application->profile->bio}}
                                             @endif
 
-                                            <div class="row align-text-bottom">
+                                            <div class="row align-baseline mt-3">
                                                 <div class="col-sm-6">
-                                                    @if($applicant->resume != "document")
-                                                        <a href="{{ $applicant->resume }}">Resume</a>
+                                                    @if($application->resume != "")
+                                                        <a href="{{ $application->resume }}">Resume</a>
                                                     @else
-                                                        <a href="{{ $applicant->cv }}">CV</a>
+                                                        <a href="{{ $application->profile->cv }}">CV</a>
                                                     @endif
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    @if($applicant->cover_letter != "document")
-                                                        <a href="{{ $applicant->cover_letter }}">Cover Letter</a>
+                                                    @if($application->cover_letter != "")
+                                                        <a href="{{ $application->cover_letter }}">Cover Letter</a>
                                                     @else
-                                                        <a href="{{ $applicant->cover_letter }}">Cover Letter (General)</a>
+                                                        <a href="{{ $application->profile->cover_letter }}">Cover Letter (General)</a>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <star-component status="{{ $applicant->status }}" application="{{ $applicant->id }}"></star-component>
+                                            <star-component status="{{ $application->status }}" application="{{ $application->id }}"></star-component>
                                             <div class="text-right" style="">
-                                                <p class="card-title" >Application for: <span class="font-weight-bold">{{ $applicant->opportunity->title }}</span></p>
+                                                <p class="card-title" >Application for: <span class="font-weight-bold">{{ $application->opportunity->title }}</span></p>
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +84,6 @@
 
 
                             </div>
-                        @endforeach
                     @empty
                         <div class="text-center m-5">
                             <p class="top-display">You Have No Recent Applications</p>

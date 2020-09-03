@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function EmployerProfile(){
         return $this->hasOne(EmployerProfile::class);
     }
+
+    public function Publication(){
+        return $this->hasMany(Publication::class);
+    }
 }

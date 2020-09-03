@@ -2030,7 +2030,8 @@ __webpack_require__.r(__webpack_exports__);
 
         console.log(response.data);
       })["catch"](function (errors) {
-        if (errors.response.status == 401) {// window.location = '/home';
+        if (errors.response.status == 401) {
+          console.log(errors.response);
         }
       });
     }

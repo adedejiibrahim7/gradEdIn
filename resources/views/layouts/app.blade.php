@@ -67,7 +67,7 @@
                             @endif
                         @else
 
-                            @if(auth()->user()->employerprofile)
+                            @if(auth()->user()->user_type == "recruiter")
                                 <li class="nav-item">
                                     <a class="nav-link" href="/home">Dashboard</a>
                                 </li>
@@ -80,9 +80,12 @@
 {{--                                    <a class="nav-link" href="">Profile</a>--}}
 {{--                                </li>--}}
 
-                            @elseif(auth()->user()->profile)
+                            @elseif(auth()->user()->user_type == "seeker")
                                 <li class="nav-item">
                                     <a class="nav-link" href="/my-applications">My Applications</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/saved-openings">Saved Openings</a>
                                 </li>
                             @endif
                             <li class="nav-item dropdown">

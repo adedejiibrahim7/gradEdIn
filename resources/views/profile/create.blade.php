@@ -10,13 +10,12 @@
 {{--        <div class="col-md-2"></div>--}}
         <div class="col-md-8">
             <div class="panel panel-large">
-
                 <form action="/p" method="post" enctype="multipart/form-data" id="profile_setup">
                     @csrf
-                    <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">
+{{--                    <input id="signup-token" name="_token" type="hidden" value="{{csrf_token()}}">--}}
                     <div class="form-group align-content-center m-auto">
                             <p style="height:150px; width: 150px; font-size: 100px; color: gray; background-color: aliceblue; border-radius:50%;" class="text-center m-auto">
-                                <span class="fa fa-user text-center"  id="profile_photo"></span>
+                                <span class="fa fa-user text-center" id="profile_photo"></span>
                             </p>
                             <input type="file" id="avatar" name="avatar"  style="display:none" accept="image/jpeg image/jpg image/png"/>
                             <div class="text-center">

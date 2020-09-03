@@ -31,7 +31,7 @@
                     })
                     .catch(errors => {
                         if(errors.response.status == 401){
-                            // window.location = '/home';
+                            console.log(errors.response);
                         }
                     });
 

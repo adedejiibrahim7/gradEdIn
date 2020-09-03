@@ -5,11 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 m-auto ">
-                <div class="row">
+                <div class="row panel">
                     <div class="col-sm-4">
-                        <div class="text-right">
+                        <div class="m-auto">
 {{--                            <img src="/storage/{{ $profile->avatar }}" alt="media" class="img-fluid">--}}
-                            <img src="{{ $profile->avatar }}" alt="Profile Image" class="avatar">
+                            <img src="/{{ $profile->avatar }}" alt="Profile Image" class="avatar">
                         </div>
 
                     </div>
@@ -31,10 +31,10 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <p><a href="/{{ $profile->cv }}" target="_blank"><span class="fa fa-link"></span> CV</a></p>
+                                <p><a href="{{ $profile->cv }}" target="_blank"><span class="fa fa-link"></span> CV</a></p>
                             </div>
                             <div class="col-sm-6">
-                                <p><a href="/{{ $profile->cover_letter }}" target="_blank"><span class="fa fa-link"></span> Cover Letter</a></p>
+                                <p><a href="{{ $profile->cover_letter }}" target="_blank"><span class="fa fa-link"></span> Cover Letter</a></p>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="col-sm-6">
                         <p class="font-weight-bold">Skills and Competencies</p>
                         @forelse($skills as $skill)
-                            <p>{{ $skill->skill }}</p>
+                            <p>{{ $skill->name }}</p>
                         @empty
 
                         @endforelse

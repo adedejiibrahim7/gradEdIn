@@ -22,95 +22,108 @@
                         </div>
                         <div class="tab-content">
                             <div id="all" class="tab-pane fade-in active">
-                                @forelse($profiles as $profile)
-                                    <div class="row panel mb-3 mt-1">
-                                        <div class="col-sm-4">
-                                            <img src="/{{ $profile->avatar }}" alt="media" class=" card-img">
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <p class="font-weight-bold"><a href="/profile/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>
-                                            @if(strlen($profile->bio) > 150)
-                                                {{substr($profile->bio,0,150)}}
-                                                <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
-                                                <span class="read-more-content"> {{substr($profile->bio,150,strlen($profile->bio))}}
-                                <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
-                                            @else
-                                                {{$profile->bio}}
-                                            @endif
-
-                                            <div class="row align-text-bottom">
-                                                <div class="col-sm-6">
-                                                    @if($profile->application[0]->resume != "document")
-                                                        <a href="/storage/{{ $profile->application[0]->resume }}">Resume</a>
-                                                    @else
-                                                        <a href="/storage/{{ $profile->cv }}">CV</a>
-                                                    @endif
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    @if($profile->application[0]->cover_letter != "document")
-                                                        <a href="/storage/{{ $profile->application[0]->cover_letter }}">Cover Letter</a>
-                                                    @else
-                                                        <a href="/storage/{{ $profile->cover_letter }}">Cover Letter (General)</a>
-                                                    @endif
-                                                </div>
-
+                                @forelse($applications as $application)
+{{--                                    @foreach($profiles as $profile)--}}
+                                        <div class="row panel mb-3 mt-1">
+                                            <div class="col-sm-4">
+                                                <img src="/{{ $application->profile->avatar }}" alt="media" class=" card-img">
                                             </div>
-                                            <star-component status="{{ $profile->application[0]->status }}" application="{{ $profile->application[0]->id }}"></star-component>
+                                            <div class="col-sm-8">
+                                                <p class="font-weight-bold"><a href="/profile/{{ $application->profile->id }}">{{ $application->profile->first_name }}, {{ strtoupper($application->profile->last_name)  }}</a></p>
+                                                @if(strlen($application->profile->bio) > 150)
+                                                    {{substr($application->profile->bio,0,150)}}
+                                                    <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
+                                                    <span class="read-more-content"> {{substr($application->profile->bio,150,strlen($application->profile->bio))}}
+                                                    <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
+                                                @else
+                                                    {{$application->profile->bio}}
+                                                @endif
 
+                                                <div class="row align-text-bottom">
+                                                    <div class="col-sm-6">
+                                                        @if($application->resume != "")
+                                                            <a href="/storage/{{ $application->resume }}">Resume</a>
+                                                        @else
+                                                            <a href="/storage/{{ $application->profile->cv }}">CV</a>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        @if($application->cover_letter != "")
+                                                            <a href="/storage/{{ $application->cover_letter }}">Cover Letter</a>
+                                                        @else
+                                                            <a href="/storage/{{ $application->profile->cover_letter }}">Cover Letter (General)</a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <star-component status="{{ $application->status }}" application="{{ $application->id }}"></star-component>
+                                            </div>
                                         </div>
-                                    </div>
+
+{{--                                    @endforeach--}}
                                 @empty
                                     <div class="text-center">
                                         <p>
                                             You have no applications for this opening yet
-
                                         </p>
                                     </div>
                                 @endforelse
+                                    <div class="text-center">
+                                        <ul class="pagination">
+                                            {{ $applications->links() }}
+                                        </ul>
+                                    </div>
+
                             </div>
                             <div id="starred" class="tab-pane fade">
-                                @forelse($starred_profiles as $profile)
+                                @forelse($starred_ as $starred)
                                     <div class="row panel mb-3 mt-1">
                                         <div class="col-sm-4">
-                                            <img src="/{{ $profile->avatar }}" alt="media" class=" card-img">
+                                            <img src="{{ $starred->profile->avatar }}" alt="media" class=" card-img">
                                         </div>
                                         <div class="col-sm-8">
-                                            <p class="font-weight-bold"><a href="/profile/{{ $profile->id }}">{{ $profile->first_name }}, {{ strtoupper($profile->last_name)  }}</a></p>
-                                            @if(strlen($profile->bio) > 150)
-                                                {{substr($profile->bio,0,150)}}
+                                            <p class="font-weight-bold"><a href="/profile/{{ $starred->profile->id }}">{{ $starred->profile->first_name }}, {{ strtoupper($starred->profile->last_name)  }}</a></p>
+                                            @if(strlen($starred->profile->bio) > 150)
+                                                {{substr($starred->profile->bio,0,150)}}
                                                 <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
-                                                <span class="read-more-content"> {{substr($profile->bio,150,strlen($profile->bio))}}
-                                <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
+                                                <span class="read-more-content"> {{substr($starred->profile->bio,150,strlen($starred->profile->bio))}}
+                                                <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
                                             @else
-                                                {{$profile->bio}}
+                                                {{$starred->profile->bio}}
                                             @endif
 
                                             <div class="row align-text-bottom">
                                                 <div class="col-sm-6">
-                                                    @if($profile->application[0]->resume != "document")
-                                                        <a href="/storage/{{ $profile->application[0]->resume }}">Resume</a>
+                                                    @if($starred->resume != "")
+                                                        <a href="{{ $starred->resume }}">Resume</a>
                                                     @else
-                                                        <a href="/storage/{{ $profile->cv }}">CV</a>
+                                                        <a href="{{ $starred->profile->cv }}">CV</a>
                                                     @endif
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    @if($profile->application[0]->cover_letter != "document")
-                                                        <a href="/storage/{{ $profile->application[0]->cover_letter }}">Cover Letter</a>
+                                                    @if($starred->cover_letter != "")
+                                                        <a href="{{ $starred->cover_letter }}">Cover Letter</a>
                                                     @else
-                                                        <a href="/storage/{{ $profile->cover_letter }}">Cover Letter (General)</a>
+                                                        <a href="{{ $starred->profile->cover_letter }}">Cover Letter (General)</a>
                                                     @endif
                                                 </div>
 
                                             </div>
-                                            <star-component status="{{ $profile->application[0]->status }}" application="{{ $profile->application[0]->id }}"></star-component>
+                                            <star-component status="{{ $starred->status }}" application="{{ $starred->id }}"></star-component>
 
                                         </div>
                                     </div>
+
                                 @empty
                                     <div class="text-center">
                                         You have no starred application for this opening
                                     </div>
                                 @endforelse
+
+                                    <div class="text-center">
+                                        <ul class="pagination">
+                                            {{ $starred_->links() }}
+                                        </ul>
+                                    </div>
                             </div>
                         </div>
 
@@ -118,7 +131,7 @@
             </div>
             <div class="col-sm-2">
                 <div>
-                    <a href="#">
+                    <a href="/applications/get-csv/{{ $opportunity->id }}">
                         <button class="btn btn-info">Download CSV <span class="fa fa-download"></span></button>
                     </a>
                     <p class="small">A .csv (spreadsheet) file of name, email address of applicant</p>

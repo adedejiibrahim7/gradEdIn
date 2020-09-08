@@ -20,6 +20,8 @@
     <!-- //Meta tag Keywords -->
     <!--/Style-CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('css/h-style.css') }}" type="text/css" media="all" />
     <!--//Style-CSS -->
 </head>
@@ -35,14 +37,14 @@
 {{--                        <h5>Say hello</h5>--}}
                         <h3>Find Opportunities</h3>
                         <p>GradEdIn Connects you to Opportunities, and the Best Minds</p>
-                        <a href="index.html" class="read-more-1 btn">Get Started</a>
+                        <a href="/register" class="read-more-1 btn">Get Started</a>
                     </div>
 
                 </div>
             </div>
             <div class="form-left">
                 <div class="middle">
-
+                    <img src="{{ asset('img/gradedin7.png') }}" alt="">
                 </div>
                 <form action="#" method="post" class="signin-form">
 
@@ -54,25 +56,38 @@
                         <label>Password</label>
                         <input type="password" name="" placeholder="" required />
                     </div>
+                    <div class="row mt-2">
 
-                    <div class="">
-                        @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}" style="font-size: 12px;">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                        @endif
+                        <div class="col">
+                            <div class="form-check">
+                                <label class="container" style="font-size: 13px; font-weight: normal;">Remember Me
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col text-right">
+                            @if (Route::has('password.request'))
+                                <a class="btn btn-link" href="{{ route('password.request') }}" style="font-size: 12px; margin-top: 2px; margin-bottom: 2px;">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif
+                        </div>
+
+
                     </div>
 
-                    <label class="container">I agree to <a href="#">Conditions</a> of Use and <a href="#">Privacy</a>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
+
+{{--                    <label class="container">Remember Me--}}
+{{--                        <input type="checkbox">--}}
+{{--                        <span class="checkmark"></span>--}}
+{{--                    </label>--}}
 
                     <button class="btn">Login</button>
                 </form>
-                <div class="copy-right text-center">
-                    <p>© 2019 Invent Signup. All rights reserved | Design by
-                        <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+                <div class="footer text-center">
+                    <span><a href="#">Resources | </a></span>
+                    <span><a href="#">Blog </a></span>
                 </div>
             </div>
 

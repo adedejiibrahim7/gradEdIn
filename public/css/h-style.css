@@ -202,8 +202,9 @@ button:hover {
   text-transform:uppercase;
 }
 .read-more-1:hover {
-  background: transparent;
-  border: 2px solid #fff;
+  background: #25259f;
+  /*border: 2px solid #fff;*/
+    color: white;7z
 }
 .w3l-login-6 .form-left {
   width: 30%;
@@ -327,10 +328,11 @@ button:hover {
 .w3l-login-6 .container {
   display: block;
   position: relative;
+    font-family: Arial, sans-serif;
   padding-left: 30px;
   margin-bottom: 0px;
   cursor: pointer;
-  font-size: 22px;
+  /*font-size: 22px;*/
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -581,4 +583,18 @@ button:hover {
   .w3l-login-6 .signin-form label {
     font-size: 13px;
   }
+}
+
+.footer{
+    color: gray;
+    margin-top: 20%;
+    font-size: 12px;
+
+}
+.footer>span>a{
+    text-decoration: none;
+    color: gray;
+}
+.footer>span>a:hover{
+    color: #1b4b72;
 }

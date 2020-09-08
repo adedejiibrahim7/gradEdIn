@@ -49,4 +49,12 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function home(){
+        if(Auth::check()){
+            return redirect('/home');
+        }else{
+            return view('home3');
+        }
+    }
 }

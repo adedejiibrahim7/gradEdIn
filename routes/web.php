@@ -39,3 +39,6 @@ Route::get('/my-opportunities/', 'OpportunitiesController@myOpportunities');
 Route::patch('update/{profile}', 'Profilecontroller@update');
 Route::post('star/{application}', 'ApplicationController@star');
 Route::get('applications/get-csv/{opportunity}', 'ApplicationController@DownloadCSV');
+Route::get('/homme', function (){
+   return view('home3');
+});

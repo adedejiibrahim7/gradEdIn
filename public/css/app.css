@@ -11092,3 +11092,19 @@ label {
   font-weight: normal;
 }
 
+.header-main {
+  height: 600px;
+  background-color: #fff;
+  margin-top: -20px;
+  padding: 25px;
+}
+
+.hsec-1 {
+  padding: 50px;
+}
+
+.h-display {
+  font-size: medium;
+  color: #003;
+}
+

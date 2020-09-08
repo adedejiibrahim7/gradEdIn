@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>GradEdIn</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords"
+          content="gradedin" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta tag Keywords -->
+    <!--/Style-CSS -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/h-style.css') }}" type="text/css" media="all" />
+    <!--//Style-CSS -->
+</head>
+
+<body>
+<!-- /login-section -->
+<section class="w3l-login-6">
+    <div class="login-hny">
+        <div class="form-content">
+            <div class="form-right">
+                <div class="overlay">
+                    <div class="grid-info-form">
+{{--                        <h5>Say hello</h5>--}}
+                        <h3>Find Opportunities</h3>
+                        <p>GradEdIn Connects you to Opportunities, and the Best Minds</p>
+                        <a href="index.html" class="read-more-1 btn">Get Started</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-left">
+                <div class="middle">
+
+                </div>
+                <form action="#" method="post" class="signin-form">
+
+                    <div class="form-input">
+                        <label>Email</label>
+                        <input type="email" name="" placeholder="" required />
+                    </div>
+                    <div class="form-input">
+                        <label>Password</label>
+                        <input type="password" name="" placeholder="" required />
+                    </div>
+
+                    <div class="">
+                        @if (Route::has('password.request'))
+                            <a class="btn btn-link" href="{{ route('password.request') }}" style="font-size: 12px;">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
+                    </div>
+
+                    <label class="container">I agree to <a href="#">Conditions</a> of Use and <a href="#">Privacy</a>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <button class="btn">Login</button>
+                </form>
+                <div class="copy-right text-center">
+                    <p>© 2019 Invent Signup. All rights reserved | Design by
+                        <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- //login-section -->
+</body>
+
+</html>

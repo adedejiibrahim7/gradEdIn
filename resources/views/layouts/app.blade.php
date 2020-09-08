@@ -22,9 +22,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
     <link href="{{ asset('assets/components/custom-select/custom-select.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/components/switchery/dist/switchery.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
-   <link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+{{--    <link href="{{ asset('assets/components/switchery/dist/switchery.min.css') }}" rel="stylesheet" />--}}
+{{--    <link href="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />--}}
+    <link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
@@ -119,7 +119,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" role="main">
             @yield('content')
         </main>
     </div>
@@ -135,6 +135,7 @@
 {{--    <script src="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript" ></script>--}}
 {{--    <script src="{{ asset('assets/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}" ></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" type="text/javascript" defer></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
 
 @yield('add_form')
 @yield('read_more')

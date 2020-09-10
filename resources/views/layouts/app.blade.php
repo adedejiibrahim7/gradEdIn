@@ -67,7 +67,7 @@
                             @endif
                         @else
 
-                            @if(auth()->user()->user_type == "recruiter")
+                            @if(auth()->user()->user_type == "recruiter" && auth()->user()->employer_profile != null)
                                 <li class="nav-item">
                                     <a class="nav-link" href="/home">Dashboard</a>
                                 </li>
@@ -80,7 +80,7 @@
 {{--                                    <a class="nav-link" href="">Profile</a>--}}
 {{--                                </li>--}}
 
-                            @elseif(auth()->user()->user_type == "seeker")
+                            @elseif(auth()->user()->user_type == "seeker" && auth()->user()->profile != null)
                                 <li class="nav-item">
                                     <a class="nav-link" href="/my-applications">My Applications</a>
                                 </li>
@@ -94,9 +94,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                   @if(auth()->user()->user_type == "recruiter")
+                                   @if(auth()->user()->user_type == "recruiter" && auth()->user()->employer_profile != null)
                                         <a href="#" class="dropdown-item">My Profile</a>
-                                    @elseif(auth()->user()->user_type = "seeker")
+                                    @elseif(auth()->user()->user_type = "seeker" && auth()->user()->profile != null)
                                         <a href="/profile/{{ auth()->user()->id }}" class="dropdown-item">My Profile</a>
                                     @endif
                                        <a href="/settings" class="dropdown-item">Settings <span class="fa fa-gear"></span></a>

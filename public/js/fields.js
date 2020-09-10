@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+    let max_char = 250;
+    $('#char_count').html('0/250');
+    $('#bio').keyup(function(){
+        let count = $('#bio').val().length;
+        let rem = max_char - count;
+        let str = rem + '/250';
+        $('#char_count').html(str);
+
+
+    });
 
     $('#gmat').click(function () {
         if($(this).prop("checked") === true){
@@ -99,7 +109,6 @@ $(document).ready(function(){
         '                            '
 
     //Once add button is clicked
-    // alert("ll");
     $(addButton).click(function(){
         //Check maximum number of input fields
         if(x < maxField){

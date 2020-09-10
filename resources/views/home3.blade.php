@@ -46,22 +46,35 @@
                 <div class="middle">
                     <img src="{{ asset('img/gradedin7.png') }}" alt="">
                 </div>
-                <form action="#" method="post" class="signin-form">
+                <form action="{{ route('login') }}" method="post" class="signin-form">
+                    @csrf
 
                     <div class="form-input">
                         <label>Email</label>
-                        <input type="email" name="" placeholder="" required />
+
+                        <input type="email" class="@error('email') is-invalid @enderror" name="email" placeholder=""  />
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                         </span>
+                        @enderror
                     </div>
                     <div class="form-input">
                         <label>Password</label>
-                        <input type="password" name="" placeholder="" required />
+                        <input type="password" name="password" class="@error('password') is-invalid @enderror" id="password" placeholder="" required />
+
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                         </span>
+                        @enderror
                     </div>
                     <div class="row mt-2">
 
                         <div class="col">
                             <div class="form-check">
-                                <label class="container" style="font-size: 13px; font-weight: normal;">Remember Me
-                                    <input type="checkbox">
+                                <label for="remember" class="container" style="font-size: 13px; font-weight: normal;">Remember Me
+                                    <input type="checkbox" name="remember" id="remember">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>

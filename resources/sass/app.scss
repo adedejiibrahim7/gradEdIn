@@ -1,5 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Nunito:600');
+@import url('https://fonts.googleapis.com/css?family=Nunito:700');
 
 // Variables
 @import 'variables';
@@ -8,9 +10,18 @@
 @import '~bootstrap/scss/bootstrap';
 
 
+label{
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+}
 .form-control{
     border-radius: 1px;
     height: 45px;
+    border: 2px solid #E9E8EE;
+
+}
+.form-control input:focus{
+    border-color: #070775;
 }
 .btn{
     border-radius: 1px;
@@ -53,12 +64,12 @@ label{
     border-radius: 1px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.dropify{
-    font-size: 14px;
-}
+//.dropify{
+//    font-size: 14px;
+//}
 .avatar{
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 150px;
+    max-width: 150px;
     border-radius: 50%;
 }
 .avatar-small{
@@ -70,6 +81,9 @@ label{
 .avatar>.dropify{
     max-height: 100px;
 
+}
+.fwlb{
+    font-weight: 600;
 }
 .navbar-light .navbar-nav .nav-link{
     color: #25259f;
@@ -140,12 +154,13 @@ label{
 .bootstrap-tagsinput {
     width: 100%;
     height: 50px;
-    border-radius: 0;
+    border-radius: 1px;
 }
 .label-info{
     background-color: #070775;
     padding: 3px;
     margin: 2px 3px 3px;
+    color: #b0d4f1;
 }
 .badge{
     font-size: 13px;

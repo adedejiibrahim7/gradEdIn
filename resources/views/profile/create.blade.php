@@ -39,6 +39,7 @@
                                 </div>
                                 <select name="title" id="title" class="custom-select @error('title') is-invalid @enderror">
                                     <option>Select</option>
+                                    <option value="Engnr">Engnr</option>
                                     <option value="Dr">Dr</option>
                                     <option value="Prof">Prof</option>
                                 </select>
@@ -80,14 +81,15 @@
                     <div class="row">
 {{--                        <div class="col-sm-1"></div>--}}
                         <div class="col-sm-12">
-                            <div class="form-group @error('bio') has-error @enderror p-20">
-                                <label for="bio">Bio</label>
+                            <div class="form-group @error('bio') has-error @enderror pl-4 pr-4">
+                                <label for="bio" class="font-weight-bold">Bio</label>
+
+                                <textarea rows="4" cols="100" id="bio" style="resize: none" maxlength="250" class="form-control @error('bio') is-invalid @enderror" name="bio"  required >{{ old('bio') }}</textarea>
+                                <div class="text-right" style="color: gray;" id="char_count">
+
+                                </div>
                                 <p class="error" id="bioRes"></p>
 
-                                <textarea rows="10" cols="100" id="bio" style="resize: none" class="form-control @error('bio') is-invalid @enderror" name="bio"  required >{{ old('bio') }}</textarea>
-                                @error('bio')
-                                <span>{{ $message }}</span>
-                                @enderror
                             </div>
                         </div>
 {{--                        <div class="col-sm-1"></div>--}}
@@ -233,44 +235,20 @@
                         <div class="mb-4">
                             <p class="font-weight-bold">Skills & Competencies</p>
                             <hr>
-{{--                            <div class="input-group text-left">--}}
                                 <input type="text" name="skills[]" id="skills" class="form-control" data-role="tagsinput" class="" placeholder="Skills">
-{{--                                <select name="skills[]" id="skills" data-role="tagsinput"  multiple>--}}
 
-{{--                                    @forelse(App\skills::all() as $skill)--}}
-{{--                                        <option value="{{ $skill->id }}">{{ $skill->skill }}</option>--}}
-{{--                                    @empty--}}
-{{--                                        No skills added to database--}}
-{{--                                    @endforelse--}}
-{{--                                </select>--}}
-                                @error('skills')
-                                    <span>{{ $message }}</span>
-                                @enderror
-{{--                            </div>--}}
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="cv">CV</label>
                                 <input type="file" name="cv" id="cv" class="form-control-file" accept=".pdf, .doc, .docx">
                                 <p class="error" id="cvRes"></p>
-
-                                @error('cv')
-                                <span class="text-danger">
-                                    {{ $message }}
-                                </span>
-                                @enderror
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="cover_letter">Cover Letter</label>
                                 <input type="file" name="cover_letter" id="cover_letter" class="form-control-file" accept=".pdf, .doc, .docx" >
                                 <p class="error" id="cover_letterRes"></p>
-
-                                @error('cover_letter')
-                                <span class="text-danger">
-                                    {{ $message }}
-                                </span>
-                                @enderror
                             </div>
                         </div>
 

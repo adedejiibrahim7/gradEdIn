@@ -70,8 +70,21 @@
                     @forelse($skills as $skill)
                             <span class="label-info">{{ $skill->name }}</span>
                             @empty
-
+                            None
                         @endforelse
+                    </div>
+                </div>
+
+                <div class="row ml-5">
+                    <div class="col-sm-6">
+                        <p class="font-weight-bold mt-2">Publications</p>
+                        <hr>
+
+                        @forelse($profile->user->publication as $pub)
+                            <p class="fwlb"><a href="{{ $pub->link }}" target="_blank">{{ $pub->title }}</a></p>
+                            @empty
+                        <p>None Added</p>
+                            @endforelse
                     </div>
                 </div>
             </div>

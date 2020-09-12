@@ -67,12 +67,6 @@ class ProfileController extends Controller
 //        if($request->ajax()){
 
             DB::transaction(function(){
-//                dd(json_encode(request()->all()));
-//                return response()->json([
-//                    'response' => request()->all()
-//                ]);
-//                print_r(request()->all());
-//                echo json_encode(request()->validate());
                 $data = request()->validate([
                     'title' => ['required', 'string'],
                     'firstName' => ['required', 'string'],
@@ -86,15 +80,9 @@ class ProfileController extends Controller
                     'skills.*' => '',
                     'avatar' => ['required', 'image', 'mimes:jpeg,jpg,png,bmp', 'max:2048'],
                     'cv' => ['required', 'mimes:doc,docx,pdf', 'max:2048'],
-                    'cover_letter' => ['required', 'mimes:doc,docx,pdf', 'max:2048'],
-
-//                'school' => ['required', 'string', 'min:3'],
+                    'cover_letter' => ['required', 'mimes:doc,docx,pdf', 'max:2048']
                 ]);
-//                print_r($data);
-//                return response()->json([
-//                    'error'  => $data->errors()->all()
-//                ]);
-//                dd($data['school']);
+
 
                 $avatar = request('avatar')->store('uploads/profile/image', 'public');
                 $cv = request('cv')->store('uploads/profile/docs', 'public');

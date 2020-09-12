@@ -42,3 +42,6 @@ Route::get('applications/get-csv/{opportunity}', 'ApplicationController@Download
 Route::get('/homme', function (){
    return view('home3');
 });
+Route::get('publications/add', 'PublicationController@create');
+Route::post('publications/add-publication', 'PublicationController@store');
+

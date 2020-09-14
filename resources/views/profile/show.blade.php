@@ -11,25 +11,24 @@
 {{--                            <img src="/storage/{{ $profile->avatar }}" alt="media" class="img-fluid">--}}
                             <img src="/{{ $profile->avatar }}" alt="Profile Image" class="avatar">
                         </div>
-
                     </div>
 
                     <div class="col-sm-8 p-20">
                         <div>
                             <p class="top-display text-left">{{ $profile->first_name }}, {{ strtoupper($profile->last_name) }}  </p>
                             @can('update', $profile)
-                                <p><a href="/profile/edit/{{ $profile->id }}"><button class="btn btn-primary">Edit Profile</button></a></p>
+                                <p><a href="/profile/edit/{{ $profile->user->id }}"><button class="btn btn-primary">Edit Profile</button></a></p>
                             @endcan
                             @forelse($profile->certifications as $certification)
                                 <span class="fa fa-check p-2 font-weight-bold" style="color:green">{{ $certification->certification }}</span>
                                 @empty
                             @endforelse
                         </div>
-
                     </div>
+                </div>
 
                     <div class=" pt-3 text-center" style="padding-left: 80px; padding-right: 80px;">
-                        <p class="">{{ $profile->bio }}</p>
+                        <p class="text-center">{{ $profile->bio }}</p>
 
                         <div class="row">
                             <div class="col-sm-6">
@@ -41,11 +40,9 @@
                         </div>
                     </div>
 
-                    <hr>
-                </div>
                 <div class="row ml-5">
                     <div class="col-sm-6 mt-1">
-                        <p class="font-weight-bold">Academic History</p>
+                        <div class="font-weight-bold ms">Academic History</div>
                         <hr>
                         @forelse($academic_history as $ach)
                             <p class="fwlb"><span>{{ $ach->certification }} {{ $ach->course }}, </span>{{ $ach->school }}</p>
@@ -64,8 +61,8 @@
 {{--                    </div>--}}
                 </div>
                 <div class="row ml-5">
-                    <div class="col-sm-6">
-                        <p class="font-weight-bold mt-3">Skills and Competencies</p>
+                    <div class="col-sm-6 mt-1">
+                        <div class="font-weight-bold mt-3 ms">Skills and Competencies</div>
                         <hr>
                     @forelse($skills as $skill)
                             <span class="label-info">{{ $skill->name }}</span>
@@ -76,15 +73,17 @@
                 </div>
 
                 <div class="row ml-5">
-                    <div class="col-sm-6">
-                        <p class="font-weight-bold mt-2">Publications</p>
+                    <div class="col-sm-6 mt-2">
+                        <div class="font-weight-bold mt-2 ms">
+                            Publications
+                        </div>
                         <hr>
 
                         @forelse($profile->user->publication as $pub)
                             <p class="fwlb"><a href="{{ $pub->link }}" target="_blank">{{ $pub->title }}</a></p>
-                            @empty
-                        <p>None Added</p>
-                            @endforelse
+                        @empty
+                            <p>None Added</p>
+                        @endforelse
                     </div>
                 </div>
             </div>

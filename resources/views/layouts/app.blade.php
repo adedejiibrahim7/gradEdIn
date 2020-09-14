@@ -126,6 +126,7 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.quilljs.com/1.3.6/quill.js" ></script>
+<script src="https://kit.fontawesome.com/04d124077d.js" crossorigin="anonymous"></script>
 
 {{--<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" defer></script>--}}
 

@@ -172,6 +172,24 @@ label{
     margin-top: -20px;
     padding: 25px;
 }
+p .ms{
+    margin-bottom: 1px;
+}
+.icon{
+    height: 35px;
+    width: 35px;
+    padding:5px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px ghostwhite;
+    background-color: #e9ecef;
+    color: gray;
+    text-align: center;
+    font-size: 18px;
+}
+.icon:hover{
+    color: white;
+    background-color: #b0d4f1;
+}
 .hsec-1{
     padding: 50px;
 

@@ -42,14 +42,13 @@ class ProfileController extends Controller
     {
         $this->middleware('auth');
     }
-    public function edit(profile $profile){
+    public function edit(User $user){
+        $profile = $user->profile;
         $this->authorize('update', $profile);
-        dd("Will be added soon");
-//        dd(auth()->user()->profile->user_id);
-        $nn = $profile->skills->pluck('skill');
-        $notSkills = skills::whereNotIn('skill', $nn)->get();
-//        dd($notSkills);
-        return view('profile.edit', compact('profile', 'notSkills'));
+//        dd("Will be added soon");
+//        $nn = $user->skills->pluck('skill');
+//        $notSkills = skills::whereNotIn('skill', $nn)->get();
+        return view('profile.edit', compact('profile'));
     }
 
     public function update(profile $profile){

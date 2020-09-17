@@ -39,6 +39,9 @@
                                 </div>
                                 <select name="title" id="title" class="custom-select @error('title') is-invalid @enderror">
                                     <option>Select</option>
+                                    <option value="Mr">Mr</option>
+                                    <option value="Miss">Miss</option>
+                                    <option value="Mrs">Mrs</option>
                                     <option value="Engnr">Engnr</option>
                                     <option value="Dr">Dr</option>
                                     <option value="Prof">Prof</option>
@@ -85,9 +88,7 @@
                                 <label for="bio" class="font-weight-bold">Bio</label>
 
                                 <textarea rows="4" cols="100" id="bio" style="resize: none" maxlength="250" class="form-control @error('bio') is-invalid @enderror" name="bio"  required >{{ old('bio') }}</textarea>
-                                <div class="text-right" style="color: gray;" id="char_count">
-
-                                </div>
+                                <div class="text-right" style="color: gray;" id="char_count"></div>
                                 <p class="error" id="bioRes"></p>
 
                             </div>
@@ -113,9 +114,7 @@
                                         <div class="form-group">
                                             <label for="course">Program</label>
                                             <input type="text" class="form-control ach @error('course') is-invalid @enderror" name="course[]" id="course" value="">
-                                            @error('course')
-                                            <span>{{ $message }}</span>
-                                            @enderror
+
                                         </div>
                                         <div class="input-group mb-2">
                                             <div class="input-group-prepend">
@@ -132,9 +131,7 @@
                                                 <option value="M.A">Master of Arts</option>
                                                 <option value="PhD">Doctor of Philosophy</option>
                                             </select>
-                                            @error('certification')
-                                            <span>{{ $message }}</span>
-                                            @enderror
+
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6">
@@ -266,5 +263,6 @@
 @section('add_form')
 
     <script src="{{ asset('js/fields.js') }}" defer></script>
+    <script src="{{ asset('js/char_limit.js') }}" defer></script>
 
 @endsection

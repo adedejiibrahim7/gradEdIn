@@ -8,7 +8,6 @@
                 <div class="row ">
                     <div class="col-sm-4">
                         <div class="m-auto text-right">
-{{--                            <img src="/storage/{{ $profile->avatar }}" alt="media" class="img-fluid">--}}
                             <img src="/{{ $profile->avatar }}" alt="Profile Image" class="avatar">
                         </div>
                     </div>

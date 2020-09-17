@@ -38,33 +38,63 @@ class ProfileController extends Controller
 
         return view('profile.show', compact('profile', 'academic_history', 'skills'));
     }
+
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     public function edit(User $user){
         $profile = $user->profile;
         $this->authorize('update', $profile);
-//        dd("Will be added soon");
-//        $nn = $user->skills->pluck('skill');
-//        $notSkills = skills::whereNotIn('skill', $nn)->get();
         return view('profile.edit', compact('profile'));
     }
 
-    public function update(profile $profile){
+    public function update(){
+
+        $profile = auth()->user()->profile;
         $this->authorize('update', $profile);
-        dd("Profile Update coming in a jiffy");
-//        if(request()->gre == 'on'){
-//
-//            dd(request()->all());
-//        }
-//        dd("Hi");
+        if(\request('school')){
+            dd(\request()->all());
+        }
+        dd(\request()->all());
+        if(request('bio')){
+            $data = request()->validate([
+                'bio' => 'required|string|min:3|max:250'
+
+            ]);
+            if(request('avatar')){
+                $val = \request()->validate([
+                    'avatar' => 'required|max:2048|image|mimes:jpg,jpeg,png,bmp'
+                ]);
+                $avatar = request('avatar')->store('uploads/profile/image', 'public');
+                $profile->avatar = $avatar;
+            }
+
+            $profile->bio = $data['bio'];
+            $profile->save();
+            dd("Done");
+        }
+
+        if(request('first_name')){
+            $data = request()->validate([
+                'title' => 'required',
+                'first_name' => 'string|min:3|max:250',
+                'last_name' => 'string|min:3|max:250',
+            ]);
+
+            $profile->first_name = $data['first_name'];
+            $profile->last_name = $data['last_name'];
+            $profile->save();
+        }
     }
+
+    public function ach(){
+
+    }
+
     public function store(request $request)
     {
-//        dd(request()->all());
-//        if($request->ajax()){
-
             DB::transaction(function(){
                 $data = request()->validate([
                     'title' => ['required', 'string'],
@@ -142,14 +172,8 @@ class ProfileController extends Controller
                 }
 
 
-//                $profile->skills()->attach($data['skills']);
             });
-
-//        }
-
-
         session()->flash('msg', 'Profile Created!');
         return redirect('/home');
-
     }
 }

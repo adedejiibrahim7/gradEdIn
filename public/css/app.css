@@ -10958,7 +10958,7 @@ label {
 }
 
 label {
-  font-family: Arial, sans-serif;
+  font-family: Nunito, sans-serif;
   font-size: 13px;
   font-weight: 600;
 }
@@ -10967,7 +10967,9 @@ label {
   height: 80px;
   width: 150px;
 }
-
+textarea{
+    resize: none;
+}
 .logo > img {
   max-width: 100%;
   max-height: 100%;

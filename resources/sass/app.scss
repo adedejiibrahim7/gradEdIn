@@ -185,6 +185,10 @@ p .ms{
     color: gray;
     text-align: center;
     font-size: 18px;
+    cursor: pointer;
+}
+.del-ach{
+    display: none;
 }
 .icon:hover{
     color: white;

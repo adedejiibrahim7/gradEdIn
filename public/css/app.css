@@ -10958,7 +10958,7 @@ label {
 }
 
 label {
-  font-family: Nunito, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
 }
@@ -10967,9 +10967,7 @@ label {
   height: 80px;
   width: 150px;
 }
-textarea{
-    resize: none;
-}
+
 .logo > img {
   max-width: 100%;
   max-height: 100%;
@@ -11126,6 +11124,11 @@ p .ms {
   color: gray;
   text-align: center;
   font-size: 18px;
+  cursor: pointer;
+}
+
+.del-ach {
+  display: none;
 }
 
 .icon:hover {

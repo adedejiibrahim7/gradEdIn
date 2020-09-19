@@ -45,4 +45,7 @@ Route::get('/homme', function (){
 });
 Route::get('publications/add', 'PublicationController@create');
 Route::post('publications/add-publication', 'PublicationController@store');
+Route::post('academic-history/add', 'AcademicHistoryController@store');
+Route::patch('academic-history/update', 'AcademicHistoryController@update');
+Route::get('/academic-history/delete/{academic_history}', 'AcademicHistoryController@destroy');
 

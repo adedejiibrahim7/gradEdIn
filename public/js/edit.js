@@ -2,6 +2,7 @@ $(document).ready(function(){
     let u = 0;
     let v = 0;
     let w = 0;
+    let t = 0;
     $(document).on('click', '#pf-e', function () {
         v++;
         $('.pf').attr('disabled', false);
@@ -133,6 +134,7 @@ $(document).ready(function(){
     $(document).on('click', '#ach-e', function () {
         w++;
         $('.ach').attr('disabled', false);
+        $('.del-ach').css('display', 'block');
         if(w == 1){
             let ach_save = '<div>\n' +
                 '                                    <button  class="btn btn-sm btn-info" id="ach_save">Save</button>\n' +
@@ -141,6 +143,13 @@ $(document).ready(function(){
 
         }
     });
+
+     function func(id){
+         event.preventDefault();
+        this.id = id;
+        alert(id);
+        return false;
+    }
 
     $(document).on('click', '#ach_save', function(){
         let form = $('#academic_history')[0];
@@ -153,7 +162,7 @@ $(document).ready(function(){
         });
 
         $.ajax({
-            url: '/profile/update',
+            url: '/academic-history/update',
             type: 'post',
             async: false,
             processData: false,
@@ -176,17 +185,17 @@ $(document).ready(function(){
                 } else if(x.status===404) {
                     alert('Requested URL not found.');
                 } else if(x.status===500) {
-                    alert('Internal Server Error.');
+                    alert('Please check that edited entries are entered correctly');
                 } else if(e==='parsererror') {
                     alert('Error.\nParsing JSON Request failed.');
                 } else if(e==='timeout'){
                     alert('Request Time out.');
                 } else {
-                    alert("kk");
+                    alert("Error");
                 }
             }
         });
-        $('#pf_save').attr('disabled',false);
+        $('#ach_save').attr('disabled',false);
         return false;
     });
 
@@ -243,14 +252,71 @@ $(document).ready(function(){
         '                            '
 
     $(document).on('click', '#add', function () {
+        t++;
         $('#ach_new').append(fieldHTML);
-        $('#ach_new').append()
+
+        if(t == 1){
+            let ach_add = '<div>\n' +
+                            '<button  class="btn  btn-info" id="ach_add">Add Entries</button>\n' +
+                           '</div>';
+            $('#ach_new_form').append(ach_add);
+
+        }
     });
 
     $(document).on('click', '.remove_button', function(e){
         e.preventDefault();
         $(this).parent('div').parent('div').parent('div').remove(); //Remove field html
         // x--; //Decrement field counter
+    });
+
+    $(document).on('click', '#ach_add', function () {
+        alert("DD");
+        let form = $('#ach_new_form')[0];
+        let formData = new FormData(form);
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: '/academic-history/add',
+            type: 'post',
+            async: false,
+            processData: false,
+            contentType: false,
+            data: formData,
+            // dataType: 'json',
+            beforeSend:function(){
+                $('#ach_add').attr('disabled','disabled');
+            },
+            success: function (data) {
+                // let str = 'Saved <span class="fa fa-check"></span>';
+                let str = 'Added ';
+                $('#ach_add').text(str)
+                // window.location.href = "/home";
+            },
+
+            error:function(x,e) {
+                if (x.status===0) {
+                    alert('You are offline!!\n Please Check Your Network.');
+                } else if(x.status===404) {
+                    alert('Requested URL not found.');
+                } else if(x.status===500) {
+                    alert('Please check that all entries are correct');
+                } else if(e==='parsererror') {
+                    alert('Error.\nParsing JSON Request failed.');
+                } else if(e==='timeout'){
+                    alert('Request Time out.');
+                } else {
+                    alert("kk");
+                }
+            }
+        });
+        $('#pf_add').attr('disabled',false);
+        return false;
     });
 
 });

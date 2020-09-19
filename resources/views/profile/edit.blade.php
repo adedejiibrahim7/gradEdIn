@@ -96,21 +96,22 @@
                                     @csrf
                                     @method('PATCH')
                                     @forelse($profile->academic_history as $ach)
+                                        <input type="hidden" value="{{ $ach->id }}" name="id[]">
                                         <div class="form-group">
-                                            <label for="school">University</label>
-                                            <input type="text" class="form-control ach" id="school" name="school" value="{{$ach->school}}" disabled>
+                                            <label for="school[]">University</label>
+                                            <input type="text" class="form-control ach" id="school" name="school[]" value="{{$ach->school}}" disabled>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="course">Program</label>
+                                            <label for="course[]">Program</label>
 
-                                            <input type="text" class="form-control ach" name="course" id="course" value="{{ $ach->course }}" disabled>
+                                            <input type="text" class="form-control ach" name="course[]" id="course" value="{{ $ach->course }}" disabled>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="certification">Degree</label>
+                                            <label for="certification[]">Degree</label>
                                             {{--                                    <input type="text" class="form-control ach" value="Lorem ipsum dolor" disabled>--}}
-                                            <select class="form-control ach" name="certification" id="certification" disabled>
+                                            <select class="form-control ach" name="certification[]" id="certification" disabled>
                                                 <option value="{{ $ach->certification }}">{{ $ach->certification }}</option>
                                                 <option value="Diploma">Diploma</option>
                                                 <option value="B.A">Bachelor of Arts</option>
@@ -122,6 +123,26 @@
                                                 <option value="PhD">Doctor of Philosophy</option>
                                             </select>
                                         </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="start">Start</label>
+                                                <input type="text" name="start[]" id="start" class="form-control ach" value="{{ $ach->start }}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="end">End</label>
+                                                <input type="text" name="end[]" id="end" class="form-control ach" value="{{ $ach->end }}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+{{--                                        <a href="/academic-history/delete/{{ $ach->id }}">--}}
+                                            <a href="/academic-history/delete/{{ $ach->id }}" class="btn btn-sm btn-danger del-ach" >Delete</a>
+{{--                                        </a>--}}
+                                    </div>
                                         <hr>
                                     @empty
 

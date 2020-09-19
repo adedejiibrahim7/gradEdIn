@@ -54,10 +54,7 @@ class ProfileController extends Controller
 
         $profile = auth()->user()->profile;
         $this->authorize('update', $profile);
-        if(\request('school')){
-            dd(\request()->all());
-        }
-        dd(\request()->all());
+
         if(request('bio')){
             $data = request()->validate([
                 'bio' => 'required|string|min:3|max:250'
@@ -90,7 +87,12 @@ class ProfileController extends Controller
     }
 
     public function ach(){
-
+        $profile = auth()->user()->profile;
+        $this->authorize('update', $profile);
+        if(\request('school')){
+            dd(\request()->all());
+        }
+        dd(\request()->all());
     }
 
     public function store(request $request)

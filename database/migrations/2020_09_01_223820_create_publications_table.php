@@ -15,7 +15,7 @@ class CreatePublicationsTable extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->string('link');

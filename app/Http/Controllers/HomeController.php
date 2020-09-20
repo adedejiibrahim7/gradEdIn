@@ -31,9 +31,11 @@ class HomeController extends Controller
         if(auth()->user()->user_type == "seeker" && auth()->user()->profile){
             $opportunities = opportunity::latest()->paginate(10);
 //            dd($opportunities);
-            $status = DB::table('saved_opening')->whereIn('opportunity_id', $opportunities->pluck('id'))->get();
+//            $status = DB::table('saved_opening')->whereIn('opportunity_id', $opportunities->pluck('id'))->get();
 //            dd($status);
-            return view('opportunities.index', compact('opportunities', 'status'));
+//            $t = DB::table('saved_opening')->where('opportunity_id', 6)->where('user_id', auth()->user()->id)->count();
+//            dd($t);
+            return view('opportunities.index', compact('opportunities'));
         }elseif(auth()->user()->user_type == "recruiter" && auth()->user()->employerprofile){
             $opportunities = opportunity::where('user_id', auth()->user()->id)->pluck('id');
             $applications = Application::whereIn('opportunity_id', $opportunities)->get();

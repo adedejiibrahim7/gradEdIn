@@ -101,4 +101,38 @@ class OpportunitiesController extends Controller
         $opportunities = opportunity::where('user_id', auth()->user()->id)->paginate(10);
         return view('user.my-opportunities', compact('opportunities'));
     }
+
+    public function save(opportunity $opportunity){
+        $v = DB::table('saved_opening')->where('opportunity_id', $opportunity->id)->where('user_id', auth()->user()->id);
+        if($v->count() == 0) {
+            DB::table('saved_opening')->insert([
+                'user_id' => auth()->user()->id,
+                'opportunity_id' => $opportunity->id,
+
+            ]);
+            return "saved";
+        }elseif ($v->count() > 0){
+//            $opportunity->delete();
+//            $so = $v->first();
+            $status = $v->first()->status;
+//            dd($status);
+            if($status == "saved"){
+                $v->update(['status' => "unsaved"]);
+                return "1";
+            }elseif ($status == "unsaved"){
+                $v->update(['status' => "saved"]);
+                return "2";
+            }
+//            $so->save();
+            return "done";
+//            $v->first()->delete();
+//            return "unsaved";
+        }
+    }
+
+    public function savedOpenings(){
+        $so = DB::table('saved_opening')->where('user_id', auth()->user()->id)->where('status', "saved");
+        $opportunities = opportunity::whereIn('id', $so->pluck('opportunity_id'))->paginate(10);
+        return view('saved-openings', compact('opportunities'));
+}
 }

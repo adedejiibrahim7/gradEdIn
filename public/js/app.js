@@ -1955,7 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      status: this.status
+      value: this.status
     };
   },
   methods: {
@@ -1964,24 +1964,24 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/save/' + this.opportunity).then(function (response) {
         // this.status = !this.status;
-        if (_this.status == "pending") {
-          _this.status = "starred";
-        } else if (_this.status == "starred") {
-          _this.status = "pending";
+        if (_this.value == 0) {
+          _this.value = "1";
+        } else if (_this.value > 0) {
+          _this.value = "0";
         }
 
         console.log(response.data);
       })["catch"](function (errors) {
-        if (errors.response.status == 401) {// window.location = '/home';
+        if (errors.response.value == 401) {// window.location = '/home';
         }
       });
     }
   },
   computed: {
     starClass: function starClass() {
-      if (this.status == "pending") {
+      if (this.value == 0) {
         return "star";
-      } else if (this.status == "starred") {
+      } else if (this.value > 0) {
         return "star-blue";
       }
     }
@@ -2013,7 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      status: this.status
+      value: this.value
     };
   },
   methods: {
@@ -2021,16 +2021,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/star/' + this.application).then(function (response) {
-        // this.status = !this.status;
-        if (_this.status == "pending") {
-          _this.status = "starred";
-        } else if (_this.status == "starred") {
-          _this.status = "pending";
+        // this.value = !this.value;
+        if (_this.value == "pending") {
+          _this.value = "starred";
+        } else if (_this.value == "starred") {
+          _this.value = "pending";
         }
 
         console.log(response.data);
       })["catch"](function (errors) {
-        if (errors.response.status == 401) {
+        if (errors.response.value == 401) {
           console.log(errors.response);
         }
       });
@@ -2038,9 +2038,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     starClass: function starClass() {
-      if (this.status == "pending") {
+      if (this.value == "pending") {
         return "star";
-      } else if (this.status == "starred") {
+      } else if (this.value == "starred") {
         return "star-blue";
       }
     }
@@ -37688,11 +37688,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "mt-1" }, [
     _c("span", {
       staticClass: "fa fa-heart",
       class: _vm.starClass,
-      staticStyle: { "font-size": "14px" },
+      staticStyle: { "font-size": "16px" },
       on: { click: _vm.star }
     })
   ])

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <span class="fa fa-heart" @click="star" v-bind:class="starClass" style="font-size: 14px"></span>
+    <div class="mt-1">
+        <span class="fa fa-heart" @click="star" v-bind:class="starClass" style="font-size: 16px"></span>
     </div>
 </template>
 
@@ -14,7 +14,7 @@
 
         data: function(){
             return{
-                status: this.status
+                value: this.status
             }
         },
         methods:{
@@ -22,15 +22,15 @@
                 axios.post('/save/' + this.opportunity)
                     .then(response => {
                         // this.status = !this.status;
-                        if(this.status == "pending"){
-                            this.status = "starred"
-                        }else if(this.status == "starred"){
-                            this.status = "pending"
+                        if(this.value == 0){
+                            this.value = "1"
+                        }else if(this.value > 0){
+                            this.value = "0"
                         }
                         console.log(response.data);
                     })
                     .catch(errors => {
-                        if(errors.response.status == 401){
+                        if(errors.response.value == 401){
                             // window.location = '/home';
                         }
                     });
@@ -39,9 +39,9 @@
         },
         computed: {
             starClass(){
-                if(this.status == "pending"){
+                if(this.value == 0){
                     return "star"
-                }else if(this.status == "starred"){
+                }else if(this.value > 0 ){
                     return "star-blue"
                 }
             }

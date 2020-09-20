@@ -48,4 +48,6 @@ Route::post('publications/add-publication', 'PublicationController@store');
 Route::post('academic-history/add', 'AcademicHistoryController@store');
 Route::patch('academic-history/update', 'AcademicHistoryController@update');
 Route::get('/academic-history/delete/{academic_history}', 'AcademicHistoryController@destroy');
+Route::post('/save/{opportunity}', 'OpportunitiesController@save');
+Route::get('/saved-openings', 'OpportunitiesController@savedOpenings');
 

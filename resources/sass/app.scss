@@ -28,12 +28,13 @@ label{
 }
 .panel{
     background-color: white;
+    box-shadow: 2px 2px 2px whitesmoke;
+
 }
 .panel-large{
     padding: 25px;
     border: 1px solid whitesmoke;
     //box-shadow: 2px #ffa867;
-    box-shadow: 2px 2px 2px whitesmoke;
 }
 label{
     font-family: Arial, sans-serif;

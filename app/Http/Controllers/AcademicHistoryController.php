@@ -68,6 +68,8 @@ class AcademicHistoryController extends Controller
             $academic_history->delete();
             $str = "/profile/" .$user;
             return redirect($str);
+        }else{
+            return redirect('home');
         }
 
     }

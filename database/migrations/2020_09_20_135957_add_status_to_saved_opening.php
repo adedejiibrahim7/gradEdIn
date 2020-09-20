@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPositionToEmployerProfiles extends Migration
+class AddStatusToSavedOpening extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddPositionToEmployerProfiles extends Migration
      */
     public function up()
     {
-        Schema::table('employer_profiles', function (Blueprint $table) {
-            $table->string('position')->default("From");
+        Schema::table('saved_opening', function (Blueprint $table) {
+            $table->string('status')->default("saved");
+
         });
     }
 
@@ -25,8 +26,8 @@ class AddPositionToEmployerProfiles extends Migration
      */
     public function down()
     {
-//        Schema::table('employer_profiles', function (Blueprint $table) {
-//            $table->string('position')->default("From");
-//        });
+        Schema::table('saved_opening', function (Blueprint $table) {
+            //
+        });
     }
 }

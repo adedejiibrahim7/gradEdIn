@@ -27,7 +27,7 @@ class UserController extends Controller
 //                        dd("Done");
                     }
                 }elseif ($type == "recruiter"){
-                    $user->user_type = "recruiter";
+                    $user->user_type = "seeker";
                     $user->save();
                 }
             }

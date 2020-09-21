@@ -67,7 +67,7 @@
                             @endif
                         @else
 
-                            @if(auth()->user()->user_type == "recruiter" && auth()->user()->employer_profile != null)
+                            @if(auth()->user()->user_type == "recruiter" && auth()->user()->employerprofile != null)
                                 <li class="nav-item">
                                     <a class="nav-link" href="/home">Dashboard</a>
                                 </li>
@@ -94,7 +94,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                   @if(auth()->user()->user_type == "recruiter" && auth()->user()->employer_profile != null)
+                                   @if(auth()->user()->user_type == "recruiter" && auth()->user()->employerprofile != null)
                                         <a href="#" class="dropdown-item">My Profile</a>
                                     @elseif(auth()->user()->user_type = "seeker" && auth()->user()->profile != null)
                                         <a href="/profile/{{ auth()->user()->id }}" class="dropdown-item">My Profile</a>

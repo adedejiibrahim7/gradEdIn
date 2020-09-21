@@ -14,7 +14,7 @@
 
         data: function(){
             return{
-                value: this.value
+                value: this.status
             }
         },
         methods:{

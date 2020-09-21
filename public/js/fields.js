@@ -190,7 +190,7 @@ $(document).ready(function(){
                     }
                         $("#achRes").html(yy);
                     if('school' in res.errors){
-                        alert("Heylo");
+                        // alert("Heylo");
                     }
                     if(res.errors.gre){
                         $("#greRes").html(res.errors.gre);
@@ -210,8 +210,8 @@ $(document).ready(function(){
                     if(res.errors.cover_letter){
                         $("#cover_letterRes").html(res.errors.cover_letter);
                     }
-                    alert(x.responseText);
-                    alert(res.errors.firstName);
+                    // alert(x.responseText);
+                    // alert(res.errors.firstName);
                 }
             }
     });

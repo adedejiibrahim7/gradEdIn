@@ -16,7 +16,9 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">25</h5>
+                                <h5 class="card-title">
+                                    {{ $opportunities->count() }}
+                                </h5>
                                 <p class="card-text font-weight-bold">Openings Posted</p>
                             </div>
                         </div>
@@ -25,7 +27,10 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">13</h5>
+                                <h5 class="card-title">
+                                    {{ $opportunities->count() }}
+
+                                </h5>
                                 <p class="card-text font-weight-bold">Active Openings</p>
                             </div>
                         </div>
@@ -33,7 +38,9 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">123</h5>
+                                <h5 class="card-title">
+                                    {{ $applications->count() }}
+                                </h5>
                                 <p class="card-text font-weight-bold">Applications Received</p>
                             </div>
                         </div>

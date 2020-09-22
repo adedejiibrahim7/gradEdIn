@@ -95,7 +95,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                    @if(auth()->user()->user_type == "recruiter" && auth()->user()->employerprofile != null)
-                                        <a href="#" class="dropdown-item">My Profile</a>
+                                        <a href="/profile/{{ auth()->user()->id }}" class="dropdown-item">My Profile</a>
                                     @elseif(auth()->user()->user_type = "seeker" && auth()->user()->profile != null)
                                         <a href="/profile/{{ auth()->user()->id }}" class="dropdown-item">My Profile</a>
                                     @endif

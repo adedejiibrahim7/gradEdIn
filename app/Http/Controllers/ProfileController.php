@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create(){
         $profile = profile::where('user_id', auth()->user()->id)->get();
         $user = user::where('id', auth()->user()->id)->first();
@@ -29,20 +34,23 @@ class ProfileController extends Controller
             return redirect("/profile/edit/".auth()->user()->profile->id);
         }
     }
+
     public function show(User $user){
-//        dd(auth()->user()->id);
-        $profile = $user->profile;
-        $skills = $profile->tags;
+        if($user->user_type == 'seeker'){
+            $profile = $user->profile;
+            $skills = $profile->tags;
 
-        $academic_history = academic_history::where('profile_id', $profile->id)->get();
+            $academic_history = academic_history::where('profile_id', $profile->id)->get();
 
-        return view('profile.show', compact('profile', 'academic_history', 'skills'));
+            return view('profile.show', compact('profile', 'academic_history', 'skills'));
+        }elseif ($user->user_type == 'recruiter'){
+            $profile = $user->employerprofile;
+            return view('employer.profile', compact('profile'));
+        }
+
     }
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     public function edit(User $user){
         $profile = $user->profile;

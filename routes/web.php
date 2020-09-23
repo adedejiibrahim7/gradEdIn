@@ -50,4 +50,5 @@ Route::patch('academic-history/update', 'AcademicHistoryController@update');
 Route::get('/academic-history/delete/{academic_history}', 'AcademicHistoryController@destroy');
 Route::post('/save/{opportunity}', 'OpportunitiesController@save');
 Route::get('/saved-openings', 'OpportunitiesController@savedOpenings');
+Route::post('follow/{user}', 'UserController@follow');
 

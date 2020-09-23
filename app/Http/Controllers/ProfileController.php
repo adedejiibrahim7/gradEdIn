@@ -119,7 +119,7 @@ class ProfileController extends Controller
                     'skills.*' => '',
                     'avatar' => ['required', 'image', 'mimes:jpeg,jpg,png,bmp', 'max:2048'],
                     'cv' => ['required', 'mimes:doc,docx,pdf', 'max:2048'],
-                    'cover_letter' => ['required', 'mimes:doc,docx,pdf', 'max:2048']
+                    'cover_letter' => [ 'mimes:doc,docx,pdf', 'max:2048']
                 ]);
 
 

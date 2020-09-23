@@ -243,7 +243,7 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="cover_letter">Cover Letter</label>
+                                <label for="cover_letter">Cover Letter (Optional)</label>
                                 <input type="file" name="cover_letter" id="cover_letter" class="form-control-file" accept=".pdf, .doc, .docx" >
                                 <p class="error" id="cover_letterRes"></p>
                             </div>

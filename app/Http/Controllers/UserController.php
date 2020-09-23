@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -33,5 +34,28 @@ class UserController extends Controller
             }
         }
         return redirect('/home');
+    }
+
+    public function follow(User $user){
+        if($user->is_admin){
+            $mentee = auth()->user()->id;
+
+            $mm = DB::table('mentor_mentee')->where('mentor', $user->id)
+                ->where('mentee', $mentee);
+            if($mm->count() > 0){
+                $status = $mm->first()->status;
+
+                if($status != "follows"){
+                    $mm->update(['status' => "follows"]);
+                }else{
+                    $mm->update(['status' => "not-follows"]);
+                }
+            }else{
+                DB::table('mentor_mentee')->insert([
+                   'mentor' => $user->id,
+                    'mentee' => $mentee
+                ]);
+            }
+        }
     }
 }

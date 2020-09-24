@@ -52,3 +52,6 @@ Route::post('/save/{opportunity}', 'OpportunitiesController@save');
 Route::get('/saved-openings', 'OpportunitiesController@savedOpenings');
 Route::post('follow/{user}', 'UserController@follow');
 
+Route::get('admin/home', function(){
+   return view('admin.home');
+});

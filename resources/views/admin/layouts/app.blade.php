@@ -15,9 +15,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="{{ asset('admin/css/AdminLTE.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/css/skin-blue.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin_assets/css/AdminLTE.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin_assets/css/skin-blue.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin_assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     {{--    <link href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">--}}
     {{--    <link rel="stylesheet" href="{{ asset('assets/components/dropify/dist/css/dropify.min.css') }}">--}}
@@ -156,19 +156,20 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
 {{--                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">--}}
+                            <span class="fa fa-user"></span>
                             <!-- hidden-xs hides the username on small devices so only the image appears.  -->
 {{--                            <span class="hidden-xs">Alexander Pierce</span>--}}
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
-                            <li class="user-header">
+{{--                            <li class="user-header">--}}
 {{--                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">--}}
 
-                                <p>
+{{--                                <p>--}}
 {{--                                    Alexander Pierce - Web Developer--}}
 {{--                                    <small>Member since Nov. 2012</small>--}}
-                                </p>
-                            </li>
+{{--                                </p>--}}
+{{--                            </li>--}}
                             <!-- Menu Body -->
 {{--                            <li class="user-body">--}}
 {{--                                <div class="row">--}}
@@ -190,7 +191,15 @@
 {{--                                    <a href="#" class="btn btn-default btn-flat">Profile</a>--}}
 {{--                                </div>--}}
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+{{--                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>--}}
+                                    <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </div>
                             </li>
                         </ul>
@@ -215,7 +224,7 @@
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p>{{ auth()->user()->profile->first_name }}</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -237,19 +246,21 @@
             <ul class="sidebar-menu">
 {{--                <li class="header">HEADER</li>--}}
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-users"></i> <span>Users</span></a></li>
+                <li class=""><a href="#"><i class="fa fa-users"></i> <span>Users</span></a></li>
                 <li><a href="#"><i class="fas fa-door-open"></i> <span>Openings</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="#">Link in level 2</a></li>
                         <li><a href="#">Link in level 2</a></li>
                     </ul>
                 </li>
+                <li><a href="admin/manage"><i class="fas fa-users"></i> <span>Manage Admins</span></a></li>
+
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -276,9 +287,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 {{--<script src="https://cdn.quilljs.com/1.3.6/quill.js" ></script>--}}
-<script src="{{ asset('admin/bootstrap/js/bootstrap.min.js') }}" ></script>
-{{--<script src="{{ asset('admin/js/app.min.js') }}" ></script>--}}
-<script src="{{ asset('admin/js/app.js') }}" defer></script>
+<script src="{{ asset('admin_assets/bootstrap/js/bootstrap.min.js') }}" ></script>
+{{--<script src="{{ asset('admin_assets/js/app.min.js') }}" ></script>--}}
+<script src="{{ asset('admin_assets/js/app.js') }}" defer></script>
 <script src="https://kit.fontawesome.com/04d124077d.js" crossorigin="anonymous"></script>
 
 {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}

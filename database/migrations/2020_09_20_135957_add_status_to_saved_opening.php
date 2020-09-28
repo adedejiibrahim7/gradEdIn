@@ -14,8 +14,7 @@ class AddStatusToSavedOpening extends Migration
     public function up()
     {
         Schema::table('saved_opening', function (Blueprint $table) {
-            $table->string('status')->default("saved");
-
+//            $table->string('status')->default("saved");
         });
     }
 

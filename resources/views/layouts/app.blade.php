@@ -99,13 +99,13 @@
                                     @elseif(auth()->user()->user_type = "seeker" && auth()->user()->profile != null)
                                         <a href="/profile/{{ auth()->user()->id }}" class="dropdown-item">My Profile</a>
                                     @endif
-                                       <a href="/settings" class="dropdown-item">Settings <span class="fa fa-gear"></span></a>
+                                   <a href="/settings" class="dropdown-item">Settings <span class="fa fa-gear"></span></a>
 
-                                       <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                   <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                   </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

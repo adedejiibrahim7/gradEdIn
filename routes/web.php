@@ -55,3 +55,9 @@ Route::post('follow/{user}', 'UserController@follow');
 Route::get('admin/home', function(){
    return view('admin.home');
 });
+
+Route::get('admin/', 'AdminController@index');
+Route::get('admin/manage', 'AdminController@manage');
+Route::post('admin/user/create', 'AdminController@createUser');
+Route::get('link/{text}', 'LinkController@link');
+Route::post('admin/update/{user}', 'AdminController@newUpdate');

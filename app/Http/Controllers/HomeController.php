@@ -24,10 +24,13 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function index()
     {
+        if(auth()->user()->is_admin){
+            return redirect('/admin');
+        }
         if(auth()->user()->user_type == "seeker" && auth()->user()->profile){
             $opportunities = opportunity::latest()->paginate(10);
             return view('opportunities.index', compact('opportunities'));

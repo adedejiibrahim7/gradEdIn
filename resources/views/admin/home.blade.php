@@ -4,9 +4,9 @@
 <div class="content-wrapper" style="min-height: 566px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
-            Page Header
-            <small>Optional description</small>
+        <h1 class="">
+             Admin Dashboard
+{{--            <small>Optional description</small>--}}
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>

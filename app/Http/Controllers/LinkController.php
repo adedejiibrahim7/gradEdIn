@@ -17,10 +17,11 @@ class LinkController extends Controller
 
     public function link(){
         $link = DB::table('links')
-            ->where('text', $this->text)->get();
+            ->where('text', $this->text)->first();
+//        dd($link);
         if($link->redirect == "admin-new"){
-            $user = User::where('email', $link->value)->get();
-            return view('admin.admin-new', compact('user'));
+            $user = User::where('email', $link->value)->first();
+            return view('admin.manage.admin-new', compact('user'));
         }
 //        return redirect($link->redirect);
     }

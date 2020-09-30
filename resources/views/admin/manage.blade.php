@@ -23,9 +23,10 @@
                          <div class="box-header">
                              Create Admin
                          </div>
-
-                         <form action="" id="create_user">
+                         <form action="" method="post" id="create_user">
                              <div class="box-body">
+                                 <p class="text-danger small" id="response"></p>
+
                                  <div class="form-group">
                                      <label for="email">Email</label>
                                      <input type="text" class="form-control " id="email" name="email" placeholder="example@email.com">
@@ -39,7 +40,6 @@
                                  </div>
 
                              </div>
-
                              <div class="box-footer">
                                  <div>
                                      <button type="submit" id="create_admin" class="btn btn-info">Create Admin</button>
@@ -60,19 +60,20 @@
 @section('read_more')
     <script>
         $(function () {
-            $('#create_admin').click(function(){
+            $('#create_admin').click(function(e){
                 e.preventDefault();
-                var form = $("#create_user")[0];
-                var formData = new FormData(form);
-                // alert(formData);
-                // $(".error").html("");
+                // alert("u");
+                let user = $('#user').val();
+                let form = $("#create_user")[0];
+                let formData = new FormData(form);
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
                 $.ajax({
-                    url: '/p',
+                    url: '/admin/user/create',
                     type: 'post',
                     async: false,
                     processData: false,
@@ -85,9 +86,9 @@
                     },
                     success: function (data) {
                         // alert(data);
-                        $('#result').html('Gone!');
-                        $('#result').html('<div class="alert alert-success">Profile Created.. redirecting</div>');
-                        window.location.href = "/home";
+                        // $('#result').html('Gone!');
+                        // $('#result').html('<div class="alert alert-success">Profile Created.. redirecting</div>');
+                        // window.location.href = "/home";
                         // }
                     },
 
@@ -102,64 +103,12 @@
                             alert('Error.\nParsing JSON Request failed.');
                         } else if(e==='timeout'){
                             alert('Request Time out.');
-                        } else {
-                            var res = JSON.parse(x.responseText);
-                            if (res.errors.avatar) {
-                                $("#avatarRes").html("Please upload profile photo");
-                            }
-                            if (res.errors.title) {
-                                $("#titleRes").html("Please choose a title");
-                            }
-                            if (res.errors.firstName) {
-                                $("#firstNameRes").html(res.errors.firstName);
-                            }
-                            if (res.errors.lastName) {
-                                $("#lastNameRes").html(res.errors.lastName);
-                            }
-                            if (res.errors.bio) {
-                                $("#bioRes").html(res.errors.bio);
-                            }
-                            var t;
-                            for (t = 0; t < 10; t++) {
-
-
-                                var j = 'school' + "." +t;
-                                var k = 'course' + "." +t;
-                                var l = 'certification' + "."+t;
-                                var m = 'start' + "." +t;
-                                var n = 'end' + "." +t;
-                                if (j in res.errors || k in res.errors || l in res.errors || m in res.errors || n in res.errors) {
-                                    var yy = "Please check that academic history is filled completely"
-                                }
-                            }
-                            $("#achRes").html(yy);
-                            if('school' in res.errors){
-                                // alert("Heylo");
-                            }
-                            if(res.errors.gre){
-                                $("#greRes").html(res.errors.gre);
-                            }
-                            if(res.errors.toefl){
-                                $("#toeflRes").html(res.errors.toefl);
-                            }
-                            if(res.errors.gmat){
-                                $("#gmatRes").html(res.errors.gmat);
-                            }
-                            if(res.errors.ielts){
-                                $("#ieltsRes").html(res.errors.ielts);
-                            }
-                            if(res.errors.cv){
-                                $("#cvRes").html(res.errors.cv);
-                            }
-                            if(res.errors.cover_letter){
-                                $("#cover_letterRes").html(res.errors.cover_letter);
-                            }
-                            // alert(x.responseText);
-                            // alert(res.errors.firstName);
+                        } else if(x.status === 422){
+                           $('#response').html("Please enter a valid email address");
                         }
                     }
                 });
-                $('#go').attr('disabled',false);
+                // $('#go').attr('disabled',false);
             });
         })
     </script>

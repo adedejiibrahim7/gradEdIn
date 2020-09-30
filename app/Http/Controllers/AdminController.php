@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminMail;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -21,6 +23,17 @@ class AdminController extends Controller
         return view('admin.manage');
     }
 
+    function generateRandomString($length = 25) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+//usage
+
     public function createUser(){
 //        $this->authorize('is_admin', auth()->user());
         DB::transaction(function (){
@@ -29,34 +42,43 @@ class AdminController extends Controller
                 'level' => 'string'
             ]);
 
-            User::create([
+            $user = User::create([
                 'email' => $data['email'],
                 'password' => bcrypt(bin2hex(random_bytes(6))),
                 'is_admin' => true
             ]);
 
-            $user = User::where('email', $data['email'])->get();
+//            $user = User::where('email', $data['email'])->first();
             $name = $data['level']. "_" . random_bytes(2);
+//            dd($user);
 
-            DB::table('admin')->insert([
+
+            $admin = DB::table('admins')->insert([
                'user_id' => $user->id,
                'level' => $data['level'],
                'name' => $name
             ]);
 
-            $str = random_bytes(8);
+//            dd($admin);
+            $str = $this->generateRandomString(8);
             $count = DB::table('links')->where('text', $str)->count();
-
+//            dd(time());
             if($count != 0){
-                $str = random_bytes(8);
+                $str = $this->generateRandomString(8);
             }else{
                 DB::table('links')->insert([
                    'text' => $str,
                    'redirect' => 'admin-new',
                    'status' => "active",
-                    'value' => $user->email
+                    'value' => $user->email,
+                    'expiry' => time() + 15*60*1000
                 ]);
+
+                $link = "gradedin.herokuapp.com/link/".$str;
             }
+//            dd($link);
+            Mail::to($user)->send(new AdminMail($user, $link));
+
 
             return "Admin Created Successfully";
         });
@@ -84,7 +106,7 @@ class AdminController extends Controller
                 $user->admin->avatar = $avatar;
                 $user->admin->save();
 
-                return redirect('/admin');
+//                return redirect('/admin');
 
             }
         });

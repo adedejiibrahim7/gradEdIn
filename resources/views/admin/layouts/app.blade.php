@@ -15,24 +15,31 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="{{ asset('admin_assets/css/AdminLTE.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin_assets/css/skin-blue.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin_assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/1.2.0/css/searchPanes.dataTables.css"/>
+{{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>--}}
+    <link href="{{ asset('admin_assets/css/AdminLTE.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin_assets/css/skin-blue.min.css') }}" rel="stylesheet">
+
+    {{--    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />--}}
+    {{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/r-2.2.6/sp-1.2.0/datatables.css"/>--}}
+    {{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/sp-1.2.0/datatables.min.css"/>--}}
+
+
+
+
 
     {{--    <link href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">--}}
     {{--    <link rel="stylesheet" href="{{ asset('assets/components/dropify/dist/css/dropify.min.css') }}">--}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">--}}
-{{--    <link href="{{ asset('assets/components/custom-select/custom-select.css') }}" rel="stylesheet" type="text/css" />--}}
-    {{--    <link href="{{ asset('assets/components/switchery/dist/switchery.min.css') }}" rel="stylesheet" />--}}
-    {{--    <link href="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />--}}
-    <link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+{{--    <link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <!-- Styles -->
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+{{--    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />--}}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div id="app wrapper">
@@ -55,101 +62,7 @@
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-{{--                    <li class="dropdown messages-menu">--}}
-{{--                        <!-- Menu toggle button -->--}}
-{{--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
-{{--                            <i class="fa fa-envelope-o"></i>--}}
-{{--                            <span class="label label-success">4</span>--}}
-{{--                        </a>--}}
-{{--                        <ul class="dropdown-menu">--}}
-{{--                            <li class="header">You have 4 messages</li>--}}
-{{--                            <li>--}}
-{{--                                <!-- inner menu: contains the messages -->--}}
-{{--                                <ul class="menu">--}}
-{{--                                    <li><!-- start message -->--}}
-{{--                                        <a href="#">--}}
-{{--                                            <div class="pull-left">--}}
-{{--                                                <!-- User Image -->--}}
-{{--                                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">--}}
-{{--                                            </div>--}}
-{{--                                            <!-- Message title and timestamp -->--}}
-{{--                                            <h4>--}}
-{{--                                                Support Team--}}
-{{--                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>--}}
-{{--                                            </h4>--}}
-{{--                                            <!-- The message -->--}}
-{{--                                            <p>Why not buy a new awesome theme?</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <!-- end message -->--}}
-{{--                                </ul>--}}
-{{--                                <!-- /.menu -->--}}
-{{--                            </li>--}}
-{{--                            <li class="footer"><a href="#">See All Messages</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-                    <!-- /.messages-menu -->
 
-                    <!-- Notifications Menu -->
-{{--                    <li class="dropdown notifications-menu">--}}
-{{--                        <!-- Menu toggle button -->--}}
-{{--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
-{{--                            <i class="fa fa-bell-o"></i>--}}
-{{--                            <span class="label label-warning">10</span>--}}
-{{--                        </a>--}}
-{{--                        <ul class="dropdown-menu">--}}
-{{--                            <li class="header">You have 10 notifications</li>--}}
-{{--                            <li>--}}
-{{--                                <!-- Inner Menu: contains the notifications -->--}}
-{{--                                <ul class="menu">--}}
-{{--                                    <li><!-- start notification -->--}}
-{{--                                        <a href="#">--}}
-{{--                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <!-- end notification -->--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
-{{--                            <li class="footer"><a href="#">View all</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-                    <!-- Tasks Menu -->
-{{--                    <li class="dropdown tasks-menu">--}}
-{{--                        <!-- Menu Toggle Button -->--}}
-{{--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
-{{--                            <i class="fa fa-flag-o"></i>--}}
-{{--                            <span class="label label-danger">9</span>--}}
-{{--                        </a>--}}
-{{--                        <ul class="dropdown-menu">--}}
-{{--                            <li class="header">You have 9 tasks</li>--}}
-{{--                            <li>--}}
-{{--                                <!-- Inner menu: contains the tasks -->--}}
-{{--                                <ul class="menu">--}}
-{{--                                    <li><!-- Task item -->--}}
-{{--                                        <a href="#">--}}
-{{--                                            <!-- Task title and progress text -->--}}
-{{--                                            <h3>--}}
-{{--                                                Design some buttons--}}
-{{--                                                <small class="pull-right">20%</small>--}}
-{{--                                            </h3>--}}
-{{--                                            <!-- The progress bar -->--}}
-{{--                                            <div class="progress xs">--}}
-{{--                                                <!-- Change the css width attribute to simulate progress -->--}}
-{{--                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">--}}
-{{--                                                    <span class="sr-only">20% Complete</span>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <!-- end task item -->--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
-{{--                            <li class="footer">--}}
-{{--                                <a href="#">View all tasks</a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
@@ -213,21 +126,27 @@
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+    <aside class="main-sidebar" style="min-height: 1024px;">
 
         <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
+        <section class="sidebar" >
 
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mb-3">
-                <div class="pull-left image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                </div>
-                <div class="pull-left info">
-                    <p>{{ auth()->user()->profile->first_name }}</p>
-                    <!-- Status -->
-                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                </div>
+                @if(auth()->user()->admin)
+                    <div class="pull-left image">
+                        <img src="{{ auth()->user()->admin->avatar ?? "ll" }}" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>{{ auth()->user()->admin->name }}</p>
+                        <!-- Status -->
+{{--                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>--}}
+                    </div>
+                    @else
+                    <div class="pull-left info mb-1">
+                        <p>Admin</p>
+                    </div>
+                @endif
             </div>
 
             <!-- search form (Optional) -->
@@ -246,20 +165,48 @@
             <ul class="sidebar-menu">
 {{--                <li class="header">HEADER</li>--}}
                 <!-- Optionally, you can add icons to the links -->
-                <li class=""><a href="#"><i class="fa fa-users"></i> <span>Users</span></a></li>
-                <li><a href="#"><i class="fas fa-door-open"></i> <span>Openings</span></a></li>
+                <li class=""><a href="/admin/users"><i class="fa fa-users"></i> <span>Users</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+                    <a href="/admin/openings">
+                        <i class="fas fa-door-open"></i> <span>Openings</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li><a href="/admin/openings/pending">Pending Approval</a></li>
+                        <li><a href="/admin/openings/active">Active Openings</a></li>
+                        <li><a href="/admin/openings/closed">Closed Openings</a></li>
+                    </ul>
+                </li>
+                <li><a href="/admin/manage"><i class="fas fa-users"></i> <span>Manage Admins</span></a></li>
+
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-envelope"></i> <span>Send Mail</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
-                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="/admin/mail">Send Custom Mail</a></li>
+                        <li><a href="/admin/mail/to-all">Mail All Users</a></li>
                     </ul>
                 </li>
-                <li><a href="admin/manage"><i class="fas fa-users"></i> <span>Manage Admins</span></a></li>
+
+                <li class="treeview">
+                    <a href="#"><i class="fas fa-file-alt"></i>  <span> Mail Templates</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+
+                            <a href="{{ route('admin.mail.templates') }}">Mail Templates</a></li>
+                        <li><a href=""></a></li>
+                    </ul>
+                </li>
 
             </ul>
             <!-- /.sidebar-menu -->
@@ -286,26 +233,23 @@
 {{--@endsection--}}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-{{--<script src="https://cdn.quilljs.com/1.3.6/quill.js" ></script>--}}
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/sp-1.2.0/datatables.min.js"></script>
+{{--<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>--}}
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.js" ></script>
+{{--<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/r-2.2.6/sp-1.2.0/datatables.js" defer></script>--}}
+{{--<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>--}}
 <script src="{{ asset('admin_assets/bootstrap/js/bootstrap.min.js') }}" ></script>
+<script src="{{ asset('admin_assets/js/app.js') }}" ></script>
+{{--<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>--}}
 {{--<script src="{{ asset('admin_assets/js/app.min.js') }}" ></script>--}}
-<script src="{{ asset('admin_assets/js/app.js') }}" defer></script>
 <script src="https://kit.fontawesome.com/04d124077d.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 
 {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
 </body>
-{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
-
-
-{{--<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js" defer></script>--}}
-
-{{--    <script src="{{ asset('assets/components/dropify/dist/js/dropify.js') }}" defer></script>--}}
-{{--    <script src="/assets/components/dropify/dist/js/dropify.js"></script>--}}
-{{--    <script src="{{ asset('assets/components/custom-select/custom-select.min.js') }}" type="text/javascript" ></script>--}}
-    {{--    <script src="{{ asset('assets/components/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript" ></script>--}}
-{{--    <script src="{{ asset('assets/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}" ></script>--}}
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" type="text/javascript" defer></script>--}}
-{{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" type="text/javascript" defer></script>--}}
 
 @yield('add_form')
 @yield('read_more')
@@ -313,11 +257,12 @@
 @yield('quill')
 <script>
     $(function() {
-        // alert("kk");
-        //     $('.dropify').dropify();
-        //     $(".select2").select2();
-        //     // $(".school").select2();
-        //
+        $('#my_table').Datatable({
+            searching: true,
+            ordering: true
+        });
+        alert("Hello");
+
     });
 </script>
 </html>

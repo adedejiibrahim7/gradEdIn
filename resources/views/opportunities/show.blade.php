@@ -36,7 +36,8 @@
                                 @endforelse
                         </div>
                         <div>
-                            @cannot('view', $opportunity)
+                            @if(!auth()->user()->is_admin)
+                                @cannot('view', $opportunity)
                                 @if($opportunity->take_app)
                                     @if(count($applied) == 0)
                                         <form action="/apply/{{ $opportunity->id }}" method="post" enctype="multipart/form-data">
@@ -72,7 +73,19 @@
                                     </div>
                                 @endif
                             @endcannot
-
+                                @else
+                                <div class="text-center mt-2">
+                                    @if($opportunity->status == "pending")
+                                        <a href="/approve/{{ $opportunity->id }}">
+                                            <button class="btn btn-info">Approve</button>
+                                        </a>
+                                        @elseif($opportunity->status == "active")
+                                        <a href="/close/{{ $opportunity->id }}">
+                                            <button class="btn btn-danger">Close Opening</button>
+                                        </a>
+                                        @endif
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

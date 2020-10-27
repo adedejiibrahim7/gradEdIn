@@ -10,3 +10,13 @@
  * --------------
  */
 
+.panel{
+    padding: 15px;
+    background-color: white;
+    box-shadow: 2px 2px 2px whitesmoke;
+
+}
+
+.error{
+    color: red;
+}

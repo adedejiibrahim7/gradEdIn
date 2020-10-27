@@ -20,9 +20,10 @@ class AdminPolicy
         //
     }
 
-    public function is_admin(User $user){
-        return $user->is_admin ?
-            Response::allow() :
-            Response::deny('You are not an admin');
+    public function Admin(User $user){
+        return $user->is_admin === true;
+//            ?
+//            Response::allow() :
+//            Response::deny('You are not an admin');
     }
 }

@@ -6,23 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\user;
 
-class AdminMail extends Mailable
+class CustomMail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $subject;
+    public $body;
 
-    public $user;
-    public $link;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function     __construct(User $user, string $link)
+    public function __construct(string $subject, string $body)
     {
-        $this->user = $user;
-        $this->link = $link;
+        $this->subject = $subject;
+        $this->body = $body;
     }
 
     /**
@@ -32,11 +31,10 @@ class AdminMail extends Mailable
      */
     public function build()
     {
-//        return $this->view('view.name');
-        return $this->from('admin@mailnator.com')->markdown('mail.new-admin')->
+        return $this->from('admin@mailnator.com')->markdown('mail.custom-mail')->
         with([
-            'user' => $this->user,
-            'link'=> $this->link
+            'user' => $this->subject,
+            'link'=> $this->body
         ]);
     }
 }

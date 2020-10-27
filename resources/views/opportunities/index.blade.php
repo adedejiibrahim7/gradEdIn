@@ -63,8 +63,8 @@
                         </div>
                     </div>
                     @empty
-                        None found
-                    @endforelse
+                    None found
+                @endforelse
 
                 <div>
                     <ul class="pagination">

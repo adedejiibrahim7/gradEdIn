@@ -22,7 +22,7 @@
                 <!-- small box -->
                 <div class="small-box bg-blue">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{ App\User::count() }}</h3>
 
                         <p>Registered Users</p>
                     </div>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-blue">
+                <div class="small-box bg-purple">
                     <div class="inner">
                         <h3>150</h3>
 
@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-blue">
+                <div class="small-box bg-aqua-active">
                     <div class="inner">
                         <h3>150</h3>
 

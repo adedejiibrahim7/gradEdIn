@@ -134,5 +134,27 @@ class OpportunitiesController extends Controller
         $so = DB::table('saved_opening')->where('user_id', auth()->user()->id)->where('status', "saved");
         $opportunities = opportunity::whereIn('id', $so->pluck('opportunity_id'))->paginate(10);
         return view('saved-openings', compact('opportunities'));
-}
+    }
+
+    public function approve(opportunity $opportunity){
+       if(auth()->user()->is_admin){
+           $opportunity->status = "active";
+           $opportunity->save();
+
+           return redirect('/admin/openings');
+       }else{
+           return redirect('/home');
+       }
+    }
+
+    public function close(opportunity $opportunity){
+       if(auth()->user()->is_admin){
+           $opportunity->status = "closed";
+           $opportunity->save();
+
+           return redirect('/admin/openings');
+       }else{
+           return redirect('/home');
+       }
+    }
 }

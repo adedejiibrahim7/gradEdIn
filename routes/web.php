@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MailTemplateController;
+use App\Http\Controllers\Admin\MailTemplateController;
+use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\OpportunitiesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +30,11 @@ Route::post('/switch', 'UserController@switch');
 Route::get('/profile-setup', 'ProfileController@create');
 Route::post('/p', 'ProfileController@store');
 Route::post('/ep', 'EmployerProfileController@store');
-Route::get('/opportunities/create', 'OpportunitiesController@create');
-Route::get('/opportunities', 'OpportunitiesController@index');
-Route::get('/opportunities/{opportunity}', 'OpportunitiesController@show');
-Route::get('/openings/{opportunity}', 'OpportunitiesController@show');
-Route::post('/o', 'OpportunitiesController@store');
+Route::get('/opportunities/create', [OpportunitiesController::class, 'create']);
+Route::get('/opportunities', [OpportunitiesController::class, 'index']);
+Route::get('/opportunities/{opportunity}', [OpportunitiesController::class, 'show']);
+Route::get('/openings/{opportunity}', [OpportunitiesController::class, 'show']);
+Route::post('/o', [OpportunitiesController::class, 'store']);
 Route::post('/apply/{opportunity}', 'ApplicationController@apply');
 Route::get('/my-applications', 'ApplicationController@myApplications');
 Route::get('/applications/{opportunity}', 'ApplicationController@index');
@@ -58,26 +62,32 @@ Route::get('admin/home', function(){
    return view('admin.home');
 });
 
-Route::get('admin/', 'AdminController@index');
-Route::get('admin/manage', 'AdminController@manage');
-Route::post('admin/user/create', 'AdminController@createUser');
-Route::get('link/{text}', 'LinkController@link');
-Route::post('admin/update/{user}', 'AdminController@newUpdate');
-Route::get('admin/openings', 'AdminController@openings');
-Route::get('admin/openings/pending', 'AdminController@pending');
-Route::get('admin/openings/active', 'AdminController@active');
-Route::get('admin/openings/closed', 'AdminController@closed');
-Route::get('/approve/{opportunity}', 'OpportunitiesController@approve');
+Route::group(['prefix' => 'admin', 'name' => 'admin'], function (){
+    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/manage', [AdminController::class, 'manage']);
+    Route::post('/user/create', [AdminController::class, 'createUser']);
+    Route::get('link/{text}', 'LinkController@link');
+    Route::post('/update/{user}', [AdminController::class, 'newUpdate']);
+    Route::get('/openings', [AdminController::class, 'openings']);
+    Route::get('/openings/pending', [AdminController::class, 'pending']);
+    Route::get('/openings/active', [AdminController::class, 'active']);
+    Route::get('/openings/closed', [AdminController::class, 'closed']);
+    Route::get('/approve/{opportunity}', [OpportunitiesController::class, 'approve']);
 //Route::get('/close/{opportunity}', 'OpportunitiesController@close');
-Route::get('/close/{opportunity}', 'OpportunitiesController@close');
-Route::get('/admin/users', 'AdminController@users');
-Route::get('/admin/recruiters', 'AdminController@recruiters');
-Route::get('/admin/seekers', 'AdminController@seekers');
-Route::get('/admin/seekers', 'AdminController@seekers');
-Route::get('/admin/admins', 'AdminController@admins');
-Route::get('/admin/mail', 'MailController@index');
-Route::get('/admin/mail/to-user/{user}', 'MailController@toUser');
-Route::get('/admin/mail/to-all', 'MailController@mailAll');
-Route::post('/admin/mail/send-mail', 'MailController@send');
-Route::post('/admin/mail/send-mail/to-all', 'MailController@toAll');
-Route::get('/admin/mail/templates', [MailTemplateController::class, 'index'])->name('admin.mail.templates');
+    Route::get('/close/{opportunity}', [OpportunitiesController::class, 'close']);
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/recruiters', [AdminController::class, 'recruiters']);
+    Route::get('/seekers', [AdminController::class, 'recruiters']);
+    Route::get('/seekers', [AdminController::class, 'seekers']);
+    Route::get('/admins', [AdminController::class, 'admins']);
+    Route::get('/mail', [MailController::class, 'index']);
+    Route::get('/mail/to-user/{user}', [MailController::class, 'toUser']);
+    Route::get('/mail/to-all', [MailController::class, 'mailAll']);
+    Route::post('/mail/send-mail', [MailController::class, 'send']);
+    Route::post('/mail/send-mail/to-all', [MailController::class, 'toAll']);
+    Route::get('/mail/templates', [MailTemplateController::class, 'index'])->name('admin.mail.templates');
+    Route::post('/mail/templates/save', [MailTemplateController::class, 'save'])->name('admin.mail.templates.save');
+    Route::get('/mail/templates/{template}/delete', [MailTemplateController::class, 'delete'])->name('admin.mail.templates.delete');
+    Route::get('/mail/templates/{template}/show', [MailTemplateController::class, 'show'])->name('admin.mail.templates.delete');
+
+});

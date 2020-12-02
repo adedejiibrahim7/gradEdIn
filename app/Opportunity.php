@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class opportunity extends Model
+class Opportunity extends Model
 {
     use \Conner\Tagging\Taggable;
     protected $guarded = [];

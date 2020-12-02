@@ -33,7 +33,7 @@ class AdminMail extends Mailable
     public function build()
     {
 //        return $this->view('view.name');
-        return $this->from('admin@mailnator.com')->markdown('mail.new-admin')->
+        return $this->from('admin@mailnator.com')->markdown('admin.mail.templates.template.new-admin')->
         with([
             'user' => $this->user,
             'link'=> $this->link

@@ -13,6 +13,8 @@
         </div>
     </div>
     <div class="row justify-content-center">
+        @include('layouts.left-pane')
+
         <div class="col-md-8">
             <div class="panel p-20">
                 <div class=" top-display text-center">Add Publications</div>

@@ -195,7 +195,7 @@
                 </li>
 
                 <li class="treeview">
-                    <a href="#"><i class="fas fa-file-alt"></i>  <span> Mail Templates</span>
+                    <a href="{{ route('admin.mail.templates') }}"><i class="fas fa-file-alt"></i>  <span> Mail Templates</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

@@ -2,15 +2,14 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-{{--                <p class=""><a href="/my-opportunities">My Opportunities</a></p>--}}
-{{--                <p class=""><a href="/opportunities/create">Post Opportunity</a></p>--}}
-{{--                <p class=""><a href="/my-applications">My Applications</a></p>--}}
-{{--                <p><a href="/profile/{{ auth()->user()->id }}">My Profile</a></p>--}}
-            </div>
-            <div class="col-sm-8 m-auto p-20">
+{{--    <div class="container">--}}
+{{--        <div class="row">--}}
+{{--            <div class="col-md-2">--}}
+
+{{--            </div>--}}
+            @include('layouts.left-pane')
+
+            <div class="col-sm-8 m-auto ">
                     @if(Session::has('msg'))
                         <div class="alert alert-info">
                             <p>{{ Session::get("msg") }}  </p>
@@ -25,7 +24,8 @@
                             @endcan
                             @cannot('view', $opportunity)
                                 @if($opportunity->user->employerprofile)
-                                    <p class="font-weight-bold">{{ $opportunity->user->employerprofile['first_name'] }} {{ $opportunity->user->employerprofile['last_name'] }} </p>
+{{--                                    <p class="font-weight-bold">{{ $opportunity->user->employerprofile['first_name'] }} {{ $opportunity->user->employerprofile['last_name'] }} </p>--}}
+                                    <p class="font-weight-bold">{{ getFullName($opportunity->user->id) }} </p>
                                     <p class="small">{{ $opportunity->user->employerprofile['position'] }}, {{ strtoupper( $opportunity->user->employerprofile['institution_name']) }}</p>
                                 @endif
                             @endcannot
@@ -72,11 +72,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-2">
-{{--                <div class="display-4">Hello</div>--}}
-            </div>
-        </div>
-    </div>
+{{--            <div class="col-sm-2">--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 @endsection
 

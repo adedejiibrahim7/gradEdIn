@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Mail\AdminMail;
+use App\Http\Controllers\Controller;
 use App\opportunity;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -16,8 +18,17 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        $user = auth()->user();
-        return view('admin.home');
+//        $user = auth()->user();
+        $data = [];
+        $data['users'] = User::count();
+        $data['active-openings'] = opportunity::where('status', 'active')->count();
+        $data['new-signups'] = DB::table('users')->latest()->limit(5)->get();
+        $data['new-openings'] = DB::table('opportunities')->latest()->limit(5)->get();
+        $data['signup-count'] = DB::table('users')->where('created_at', '>=', Carbon::now()->subDay())->count();
+        $data['login-count'] = DB::table('login_logs')->where('created_at', '>=', Carbon::now()->subDay())->count();
+
+//        dd($data['new-signups']);
+        return view('admin.home', compact('data'));
     }
 
     public function manage(){

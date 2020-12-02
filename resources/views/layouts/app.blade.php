@@ -120,7 +120,13 @@
         </nav>
 
         <main class="py-4" role="main">
-            @yield('content')
+            <div class="container">
+                <div class="row p-20">
+                    @yield('content')
+                    <div class="col-sm-2">
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>

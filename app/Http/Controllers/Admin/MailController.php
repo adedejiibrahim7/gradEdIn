@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Mail\AdminMail;
 use App\User;
+use App\Http\Controllers\Controller;
 use App\Mail\CustomMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller implements ShouldQueue
@@ -71,4 +73,6 @@ class MailController extends Controller implements ShouldQueue
         session()->flash('success', "The mail will be on its way shortly");
         return redirect('/admin/mail/to-all');
     }
+
+
 }

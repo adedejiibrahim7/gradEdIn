@@ -31,7 +31,7 @@ class CustomMail extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@mailnator.com')->markdown('mail.custom-mail')->
+        return $this->from('admin@mailnator.com')->markdown('admin.mail.templates.template.custom-mail')->
         with([
             'user' => $this->subject,
             'link'=> $this->body

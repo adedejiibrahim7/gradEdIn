@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div>
         @if(Session::has('msg'))
             <div class="alert alert-info">
@@ -11,8 +10,6 @@
         <div id="result">
 
         </div>
-    </div>
-    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="panel p-20">
                 <div class=" top-display text-center">Post an Opening</div>
@@ -96,7 +93,6 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('quill')
@@ -121,7 +117,7 @@
                 // alert($("#description").val(t));
                 var form = $("#form")[0];
                 var formData = new FormData(form);
-                alert(formData);
+                // alert(formData);
                 $.ajax({
                     url: '/o',
                     type: 'post',

@@ -62,4 +62,8 @@ class User extends Authenticatable
     public function Publication(){
         return $this->hasMany(Publication::class);
     }
+
+    public function resource(){
+        return $this->hasMany(Resource::class);
+    }
 }

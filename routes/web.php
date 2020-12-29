@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\MailTemplateController;
 use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\OpportunitiesController;
-
+use App\Http\Controllers\Admin;
+use App\Http\Controllers\ResourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,23 +59,31 @@ Route::post('/save/{opportunity}', 'OpportunitiesController@save');
 Route::get('/saved-openings', 'OpportunitiesController@savedOpenings');
 Route::post('follow/{user}', 'UserController@follow');
 
+Route::get('/resources', [ResourceController::class, 'index'])->name('resources');
+
 Route::get('admin/home', function(){
    return view('admin.home');
 });
 
 Route::group(['prefix' => 'admin', 'name' => 'admin'], function (){
-    Route::get('/', [AdminController::class, 'index']);
-    Route::get('/manage', [AdminController::class, 'manage']);
-    Route::post('/user/create', [AdminController::class, 'createUser']);
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/manage', [AdminController::class, 'manage'])->name('admin.manage');
+    Route::post('/user/create', [AdminController::class, 'createUser'])->name('admin.create');
     Route::get('link/{text}', 'LinkController@link');
     Route::post('/update/{user}', [AdminController::class, 'newUpdate']);
-    Route::get('/openings', [AdminController::class, 'openings']);
-    Route::get('/openings/pending', [AdminController::class, 'pending']);
-    Route::get('/openings/active', [AdminController::class, 'active']);
-    Route::get('/openings/closed', [AdminController::class, 'closed']);
+
     Route::get('/approve/{opportunity}', [OpportunitiesController::class, 'approve']);
+
+    // Admin Opportunities
+    Route::get('/openings', [Admin\AdminController::class, 'index']);
+    Route::get('/openings/{opening}/show', [Admin\OpportunitiesController::class, 'show']);
+    Route::get('/openings/pending', [Admin\OpportunitiesController::class, 'pending']);
+    Route::get('/openings/active', [Admin\OpportunitiesController::class, 'active']);
+    Route::get('/openings/closed', [Admin\OpportunitiesController::class, 'closed']);
+    Route::get('/close/{opportunity}', [Admin\OpportunitiesController::class, 'close']);
+
+
 //Route::get('/close/{opportunity}', 'OpportunitiesController@close');
-    Route::get('/close/{opportunity}', [OpportunitiesController::class, 'close']);
     Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
     Route::get('/recruiters', [AdminController::class, 'recruiters']);
     Route::get('/seekers', [AdminController::class, 'recruiters']);

@@ -38,7 +38,7 @@ class MailController extends Controller implements ShouldQueue
 
 //        dd(request()->all());
 
-        Mail::to($data['to'])->queue(new CustomMail($subject, $body));
+        Mail::to($data['to'])->send(new CustomMail($subject, $body));
 
     }
 

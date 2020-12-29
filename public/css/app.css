@@ -10950,6 +10950,7 @@ label {
 .panel {
   background-color: white;
   box-shadow: 2px 2px 2px whitesmoke;
+    border-radius: 3px;
 }
 
 .panel-large {
@@ -11042,6 +11043,8 @@ label {
   font-weight: bold;
   padding: 5px;
 }
+
+
 
 .p-20 {
   padding: 20px;
@@ -11145,3 +11148,30 @@ p .ms {
   color: #003;
 }
 
+.hero{
+    height: 300px;
+    width: 100%;
+    background: url("/img/pattern.jpg") no-repeat;
+    background-size: cover;
+}
+
+.overlay{
+    position: relative;
+    height: inherit;
+    width: inherit;
+    background: rgba(0,4,15, 0.5);
+    color: white;
+    display: table;
+}
+
+.t{
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.title{
+    font-size: 18px;
+}

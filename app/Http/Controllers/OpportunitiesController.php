@@ -147,14 +147,5 @@ class OpportunitiesController extends Controller
        }
     }
 
-    public function close(opportunity $opportunity){
-       if(auth()->user()->is_admin){
-           $opportunity->status = "closed";
-           $opportunity->save();
 
-           return redirect('/admin/openings');
-       }else{
-           return redirect('/home');
-       }
-    }
 }

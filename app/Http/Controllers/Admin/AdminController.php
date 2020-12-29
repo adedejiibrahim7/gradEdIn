@@ -135,18 +135,9 @@ class AdminController extends Controller
         return view('admin.openings.index', compact('openings'));
     }
 
-    public function pending(){
-        $openings = opportunity::where('status', "pending")->latest()->paginate(10);
-        return view('admin.openings.pending', compact('openings'));
-    }
-    public function active(){
-        $openings = opportunity::where('status', "active")->latest()->paginate(10);
-        return view('admin.openings.active', compact('openings'));
-    }
-    public function closed(){
-        $openings = opportunity::where('status', "closed")->latest()->paginate(10);
-        return view('admin.openings.closed', compact('openings'));
-    }
+
+
+
 
     public function users(){
         $users = User::latest()->paginate(20);

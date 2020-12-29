@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Home')
+
 @section('content')
 
 {{--    <div class="container">--}}
@@ -9,7 +11,7 @@
 {{--            </div>--}}
             @include('layouts.left-pane')
 
-            <div class="col-sm-8 m-auto ">
+            <div class="col-sm-7 m-auto ">
                     @if(Session::has('msg'))
                         <div class="alert alert-info">
                             <p>{{ Session::get("msg") }}  </p>
@@ -25,8 +27,8 @@
                             @cannot('view', $opportunity)
                                 @if($opportunity->user->employerprofile)
 {{--                                    <p class="font-weight-bold">{{ $opportunity->user->employerprofile['first_name'] }} {{ $opportunity->user->employerprofile['last_name'] }} </p>--}}
-                                    <p class="font-weight-bold">{{ getFullName($opportunity->user->id) }} </p>
-                                    <p class="small">{{ $opportunity->user->employerprofile['position'] }}, {{ strtoupper( $opportunity->user->employerprofile['institution_name']) }}</p>
+                                    <div class="font-weight-bold">{{ getFullName($opportunity->user->id) }} </div>
+                                    <div class="small">{{ $opportunity->user->employerprofile['position'] }}, {{ strtoupper( $opportunity->user->employerprofile['institution_name']) }}</div>
                                 @endif
                             @endcannot
                         </div>
@@ -72,6 +74,9 @@
                     </ul>
                 </div>
             </div>
+
+            @include('layouts.right-pane')
+
 {{--            <div class="col-sm-2">--}}
 {{--            </div>--}}
 {{--        </div>--}}

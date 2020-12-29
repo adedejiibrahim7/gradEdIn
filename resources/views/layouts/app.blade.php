@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'GradEdIn') }}</title>
+    <title>{{ config('app.name', 'GradEdIn') }} - @yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -119,12 +119,10 @@
             </div>
         </nav>
 
-        <main class="py-4" role="main">
-            <div class="container">
-                <div class="row p-20">
+        <main class="" role="main">
+            <div class="container-fluid ">
+                <div class="row">
                     @yield('content')
-                    <div class="col-sm-2">
-                    </div>
                 </div>
             </div>
         </main>

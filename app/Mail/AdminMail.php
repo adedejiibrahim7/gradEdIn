@@ -19,7 +19,7 @@ class AdminMail extends Mailable
      *
      * @return void
      */
-    public function     __construct(User $user, string $link)
+    public function __construct(User $user, string $link)
     {
         $this->user = $user;
         $this->link = $link;
